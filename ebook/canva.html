@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio - Ebook Web</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --turquoise: #14B8A6;
+      --turquoise-light: #2DD4BF;
+      --turquoise-dark: #0D9488;
+      --lavender: #A78BFA;
+      --lavender-light: #C4B5FD;
+      --primary: #EC4899;
+      --primary-light: #F472B6;
+      --primary-dark: #DB2777;
+      --secondary: #A855F7;
+      --secondary-light: #C084FC;
+      --secondary-dark: #9333EA;
+      --accent: #E879F9;
+      --accent-light: #F0ABFC;
+      --accent-dark: #D946EF;
+      --dark-bg: #0F172A;
+      --dark-surface: #1E293B;
+      --dark-card: #334155;
+      --light-bg: #F8FAFC;
+      --light-surface: #FFFFFF;
+      --light-card: #F1F5F9;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    
+    .font-body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    
+    /* Dark Mode (Default) */
+    .dark {
+      --bg: var(--dark-bg);
+      --surface: var(--dark-surface);
+      --card: var(--dark-card);
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+    }
+    
+    /* Light Mode */
+    .light {
+      --bg: var(--light-bg);
+      --surface: var(--light-surface);
+      --card: var(--light-card);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+    }
+    
+    .theme-bg {
+      background-color: var(--bg);
+    }
+    
+    .theme-surface {
+      background-color: var(--surface);
+    }
+    
+    .theme-card {
+      background-color: var(--card);
+    }
+    
+    .theme-text {
+      color: var(--text-primary);
+    }
+    
+    .theme-text-secondary {
+      color: var(--text-secondary);
+    }
+    
+    .theme-text-muted {
+      color: var(--text-muted);
+    }
+    
+    /* Sidebar Styling */
+    .sidebar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--turquoise) transparent;
+    }
+    
+    .sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .sidebar::-webkit-scrollbar-thumb {
+      background: var(--turquoise);
+      border-radius: 2px;
+    }
+    
+    /* Content Scrollbar */
+    .content-area {
+      scrollbar-width: thin;
+      scrollbar-color: var(--lavender) transparent;
+    }
+    
+    .content-area::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .content-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .content-area::-webkit-scrollbar-thumb {
+      background: var(--lavender);
+      border-radius: 3px;
+    }
+    
+    /* Navigation Item */
+    .nav-item {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, var(--turquoise), var(--lavender));
+      border-radius: 0 2px 2px 0;
+      transition: height 0.3s ease;
+    }
+    
+    .nav-item:hover::before,
+    .nav-item.active::before {
+      height: 100%;
+    }
+    
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(20, 184, 166, 0.1), transparent);
+    }
+    
+    /* Page transitions */
+    .page-section {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--turquoise), var(--lavender), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Card hover effect */
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -15px rgba(167, 139, 250, 0.3);
+    }
+    
+    /* Skill bar animation */
+    .skill-bar {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      100% {
+        left: 100%;
+      }
+    }
+    
+    /* Timeline styling */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--turquoise), var(--lavender));
+      box-shadow: 0 0 0 4px var(--surface);
+    }
+    
+    /* Mobile menu button */
+    .menu-btn {
+      transition: transform 0.3s ease;
+    }
+    
+    .menu-btn.open {
+      transform: rotate(90deg);
+    }
+    
+    /* Theme toggle */
+    .theme-toggle {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--dark-surface), var(--dark-card));
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .light .theme-toggle {
+      background: linear-gradient(135deg, var(--turquoise-light), var(--lavender-light));
+    }
+    
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--turquoise);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(20, 184, 166, 0.4);
+    }
+    
+    .light .theme-toggle::before {
+      left: 33px;
+      background: var(--light-surface);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Chapter number styling */
+    .chapter-number {
+      font-size: 6rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--turquoise), var(--lavender));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.15;
+      position: absolute;
+      top: -20px;
+      right: 20px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body dark">
+  <div id="app-wrapper" class="h-full w-full theme-bg flex overflow-hidden"><!-- Mobile Header -->
+   <div class="lg:hidden fixed top-0 left-0 right-0 z-50 theme-surface border-b border-white/10 px-4 py-3 flex items-center justify-between"><button id="mobile-menu-btn" class="menu-btn p-2 rounded-lg theme-card">
+     <svg class="w-6 h-6 theme-text" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+     </svg></button>
+    <h1 class="font-display text-lg font-semibold gradient-text">Meu Portfólio</h1>
+    <div class="theme-toggle" id="mobile-theme-toggle"></div>
+   </div><!-- Sidebar -->
+   <aside id="sidebar" class="sidebar fixed lg:static inset-y-0 left-0 z-40 w-72 theme-surface border-r border-white/5 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col"><!-- Book Cover / Header -->
+    <div class="p-6 border-b border-white/5">
+     <div class="relative">
+      <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-turquoise via-lavender to-primary p-0.5 mb-4" style="background: linear-gradient(135deg, var(--turquoise), var(--lavender), var(--primary));">
+       <div class="w-full h-full theme-surface rounded-2xl flex items-center justify-center"><span class="text-3xl">✨</span>
+       </div>
+      </div>
+      <h1 id="sidebar-title" class="font-display text-xl font-bold text-center gradient-text">Meu Portfólio</h1>
+      <p id="sidebar-subtitle" class="text-center theme-text-secondary text-sm mt-1">Ebook Web Interativo</p>
+     </div><!-- Theme Toggle (Desktop) -->
+     <div class="hidden lg:flex items-center justify-center mt-4 gap-3">
+      <svg class="w-4 h-4" style="color: var(--lavender);" fill="currentColor" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+      </svg>
+      <div class="theme-toggle" id="desktop-theme-toggle"></div>
+      <svg class="w-4 h-4" style="color: var(--turquoise);" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+      </svg>
+     </div>
+    </div><!-- Table of Contents -->
+    <nav class="flex-1 overflow-y-auto p-4">
+     <p class="text-xs uppercase tracking-wider theme-text-muted mb-4 px-4">Sumário</p>
+     <ul class="space-y-1">
+      <li><button class="nav-item active w-full text-left px-4 py-3 rounded-r-lg theme-text hover:theme-text transition-colors" data-section="cover"> <span class="text-xs theme-text-muted">Capa</span> <p class="font-medium">Apresentação</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="about"> <span class="text-xs theme-text-muted">Capítulo 1</span> <p class="font-medium">Sobre Mim</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="skills"> <span class="text-xs theme-text-muted">Capítulo 2</span> <p class="font-medium">Habilidades</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="projects"> <span class="text-xs theme-text-muted">Capítulo 3</span> <p class="font-medium">Projetos</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="github"> <span class="text-xs theme-text-muted">Capítulo 4</span> <p class="font-medium">Repositórios</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="education"> <span class="text-xs theme-text-muted">Capítulo 5</span> <p class="font-medium">Formação</p></button></li>
+      <li><button class="nav-item w-full text-left px-4 py-3 rounded-r-lg theme-text-secondary hover:theme-text transition-colors" data-section="contact"> <span class="text-xs theme-text-muted">Capítulo 6</span> <p class="font-medium">Contato</p></button></li>
+     </ul>
+    </nav><!-- Footer -->
+    <div class="p-4 border-t border-white/5">
+     <p class="text-xs text-center theme-text-muted">© 2024 • Todos os direitos reservados</p>
+    </div>
+   </aside><!-- Overlay for mobile -->
+   <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 lg:hidden hidden"></div><!-- Main Content Area -->
+   <main class="content-area flex-1 overflow-y-auto pt-16 lg:pt-0">
+    <div class="max-w-4xl mx-auto p-6 lg:p-12"><!-- Cover Section -->
+     <section id="section-cover" class="page-section min-h-[80%] flex flex-col justify-center items-center text-center py-12">
+      <div class="relative mb-8">
+       <div class="w-32 h-32 rounded-full bg-gradient-to-br p-1 animate-pulse" style="background: linear-gradient(135deg, var(--turquoise), var(--lavender), var(--primary));">
+        <div class="w-full h-full theme-surface rounded-full flex items-center justify-center"><span class="text-6xl">👨‍💻</span>
+        </div>
+       </div>
+       <div class="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--turquoise);"><span class="text-white text-lg">✓</span>
+       </div>
+      </div>
+      <h1 id="cover-name" class="font-display text-4xl lg:text-6xl font-bold gradient-text mb-4">Seu Nome Aqui</h1>
+      <p id="cover-title" class="text-xl lg:text-2xl theme-text-secondary mb-6">Designer UX/UI &amp; Desenvolvedor</p>
+      <div class="flex flex-wrap justify-center gap-3 mb-8"><span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(20, 184, 166, 0.15); color: var(--turquoise);">Criativo</span> <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(167, 139, 250, 0.15); color: var(--lavender);">Inovador</span> <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(236, 72, 153, 0.15); color: var(--primary);">Dedicado</span>
+      </div><button onclick="navigateToSection('about')" class="group flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all hover:scale-105" style="background: linear-gradient(135deg, var(--turquoise), var(--lavender));"> Começar a Leitura 
+       <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+       </svg></button>
+      <div class="mt-12 flex items-center gap-8 theme-text-muted text-sm">
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg><span>6 Capítulos</span>
+       </div>
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg><span>5 min de leitura</span>
+       </div>
+      </div>
+     </section><!-- About Section -->
+     <section id="section-about" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">01</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--turquoise);">Capítulo 1</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Sobre Mim</h2>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-8">
+       <div class="lg:col-span-2">
+        <p id="about-text" class="text-lg theme-text-secondary leading-relaxed mb-6">Olá! Sou estudante de Ciência da Computação apaixonado por desenvolvimento e inovação. Combino conhecimento acadêmico sólido com prática prática através de projetos pessoais desafiadores.</p>
+        <p class="text-lg theme-text-secondary leading-relaxed mb-6">Minha abordagem é centrada na resolução criativa de problemas. Acredito que a melhor forma de aprender é desenvolvendo projetos reais e contribuindo para a comunidade tech.</p>
+        <p class="text-lg theme-text-secondary leading-relaxed">Quando não estou codificando, você me encontra desenhando interfaces, lendo sobre novas tecnologias ou explorando técnicas de design e UX para criar experiências memoráveis.</p>
+       </div>
+       <div class="space-y-4">
+        <div class="theme-card rounded-2xl p-6 hover:scale-105 transition-transform">
+         <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center animate-pulse" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));"><span class="text-2xl">&lt;/&gt;</span>
+          </div>
+          <div>
+           <p class="font-semibold theme-text">Desenvolvimento</p>
+           <p class="text-sm theme-text-muted">Full Stack</p>
+          </div>
+         </div>
+        </div>
+        <div class="theme-card rounded-2xl p-6 hover:scale-105 transition-transform">
+         <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center animate-bounce" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));"><span class="text-2xl">🎨</span>
+          </div>
+          <div>
+           <p class="font-semibold theme-text">Design</p>
+           <p class="text-sm theme-text-muted">UI/UX</p>
+          </div>
+         </div>
+        </div>
+        <div class="theme-card rounded-2xl p-6 hover:scale-105 transition-transform">
+         <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center animate-spin" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); animation: spin 3s linear infinite;"><span class="text-2xl">⚙️</span>
+          </div>
+          <div>
+           <p class="font-semibold theme-text">Algoritmos</p>
+           <p class="text-sm theme-text-muted">Estruturas</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Hobbies & Interests Section -->
+      <div class="mt-12 pt-8 border-t border-white/10">
+       <h3 class="font-display text-2xl font-semibold theme-text mb-6 flex items-center gap-3"><span class="text-3xl">✨</span> Hobbies &amp; Interesses</h3>
+       <div class="grid md:grid-cols-2 gap-4">
+        <div class="theme-card rounded-xl p-5 flex items-start gap-4 border border-white/5 hover:border-white/10 transition-all">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--accent), var(--accent-light));"><span class="text-lg">🎨</span>
+         </div>
+         <div>
+          <p class="font-semibold theme-text mb-1">Desenho &amp; Ilustração</p>
+          <p class="text-sm theme-text-secondary">Criação de interfaces, ícones e conceitos visuais através de sketches e design digital</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-5 flex items-start gap-4 border border-white/5 hover:border-white/10 transition-all">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-light));"><span class="text-lg">📚</span>
+         </div>
+         <div>
+          <p class="font-semibold theme-text mb-1">Leitura Técnica</p>
+          <p class="text-sm theme-text-secondary">Exploração de paradigmas de programação, arquitetura de software e inovações tech</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-5 flex items-start gap-4 border border-white/5 hover:border-white/10 transition-all">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));"><span class="text-lg">🧩</span>
+         </div>
+         <div>
+          <p class="font-semibold theme-text mb-1">Resolução de Problemas</p>
+          <p class="text-sm theme-text-secondary">Desafios em plataformas como LeetCode, HackerRank e competições de programação</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-5 flex items-start gap-4 border border-white/5 hover:border-white/10 transition-all">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--primary), var(--primary-light));"><span class="text-lg">💡</span>
+         </div>
+         <div>
+          <p class="font-semibold theme-text mb-1">Experimentação Criativa</p>
+          <p class="text-sm theme-text-secondary">Prototipagem de ideias, desenvolvimento de side projects e contribuição open source</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('cover')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 1 de 7</span> <button onclick="navigateToSection('skills')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div>
+     </section><!-- Skills Section -->
+     <section id="section-skills" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">02</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--lavender);">Capítulo 2</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Habilidades</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 mb-12"><!-- Technical Skills -->
+       <div>
+        <h3 class="font-display text-xl font-semibold theme-text mb-6 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background: var(--turquoise);">💻</span> Habilidades Técnicas</h3>
+        <div class="space-y-5">
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">HTML &amp; CSS</span> <span class="theme-text-muted text-sm">95%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 95%; background: linear-gradient(90deg, var(--turquoise), var(--turquoise-light));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">JavaScript</span> <span class="theme-text-muted text-sm">90%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 90%; background: linear-gradient(90deg, var(--lavender), var(--lavender-light));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">React / Vue</span> <span class="theme-text-muted text-sm">85%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 85%; background: linear-gradient(90deg, var(--primary), var(--primary-light));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">Node.js</span> <span class="theme-text-muted text-sm">80%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 80%; background: linear-gradient(90deg, var(--secondary), var(--secondary-light));"></div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Design Skills -->
+       <div>
+        <h3 class="font-display text-xl font-semibold theme-text mb-6 flex items-center gap-2"><span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background: var(--lavender);">🎨</span> Habilidades de Design</h3>
+        <div class="space-y-5">
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">UI Design</span> <span class="theme-text-muted text-sm">92%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 92%; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">UX Research</span> <span class="theme-text-muted text-sm">88%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 88%; background: linear-gradient(90deg, var(--turquoise-dark), var(--turquoise));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">Figma</span> <span class="theme-text-muted text-sm">95%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 95%; background: linear-gradient(90deg, var(--primary-dark), var(--primary));"></div>
+          </div>
+         </div>
+         <div>
+          <div class="flex justify-between mb-2"><span class="theme-text font-medium">Prototipagem</span> <span class="theme-text-muted text-sm">90%</span>
+          </div>
+          <div class="h-3 rounded-full theme-card overflow-hidden">
+           <div class="skill-bar h-full rounded-full" style="width: 90%; background: linear-gradient(90deg, var(--secondary-dark), var(--secondary));"></div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Tools & Technologies -->
+      <div>
+       <h3 class="font-display text-xl font-semibold theme-text mb-6">Ferramentas &amp; Tecnologias</h3>
+       <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5" style="background: rgba(236, 72, 153, 0.1);">Python</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5" style="background: rgba(20, 184, 166, 0.1);">JavaScript</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5" style="background: rgba(167, 139, 250, 0.1);">Java</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5" style="background: rgba(232, 121, 249, 0.1);">C++</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">React</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">Node.js</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">Git</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">VS Code</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">Figma</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">Linux</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">Docker</span> <span class="px-4 py-2 rounded-xl theme-card theme-text-secondary text-sm font-medium hover:scale-105 transition-transform cursor-default border border-white/5">PostgreSQL</span>
+       </div>
+      </div>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('about')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 2 de 7</span> <button onclick="navigateToSection('projects')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div>
+     </section><!-- Projects Section -->
+     <section id="section-projects" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">03</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--primary);">Capítulo 3</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Projetos</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6"><!-- Project 1 -->
+       <div class="project-card theme-card rounded-2xl overflow-hidden">
+        <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, var(--turquoise-dark), var(--turquoise));"><span class="text-6xl">🛒</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-2 mb-3"><span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(20, 184, 166, 0.2); color: var(--turquoise);">E-commerce</span> <span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(167, 139, 250, 0.2); color: var(--lavender);">React</span>
+         </div>
+         <h3 class="font-display text-xl font-semibold theme-text mb-2">Loja Virtual Premium</h3>
+         <p class="theme-text-secondary text-sm mb-4">Plataforma completa de e-commerce com sistema de pagamentos, carrinho e gestão de produtos.</p>
+         <div class="flex items-center gap-4"><a href="#" class="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all" style="color: var(--turquoise);"> Ver Projeto 
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></a>
+         </div>
+        </div>
+       </div><!-- Project 2 -->
+       <div class="project-card theme-card rounded-2xl overflow-hidden">
+        <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));"><span class="text-6xl">📱</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-2 mb-3"><span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(167, 139, 250, 0.2); color: var(--lavender);">App Mobile</span> <span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(236, 72, 153, 0.2); color: var(--primary);">Flutter</span>
+         </div>
+         <h3 class="font-display text-xl font-semibold theme-text mb-2">App de Finanças</h3>
+         <p class="theme-text-secondary text-sm mb-4">Aplicativo para controle financeiro pessoal com gráficos interativos e metas de economia.</p>
+         <div class="flex items-center gap-4"><a href="#" class="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all" style="color: var(--lavender);"> Ver Projeto 
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></a>
+         </div>
+        </div>
+       </div><!-- Project 3 -->
+       <div class="project-card theme-card rounded-2xl overflow-hidden">
+        <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary-dark), var(--primary));"><span class="text-6xl">🎨</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-2 mb-3"><span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(236, 72, 153, 0.2); color: var(--primary);">Design System</span> <span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(20, 184, 166, 0.2); color: var(--turquoise);">Figma</span>
+         </div>
+         <h3 class="font-display text-xl font-semibold theme-text mb-2">Design System Corporativo</h3>
+         <p class="theme-text-secondary text-sm mb-4">Sistema de design completo com componentes, tokens e documentação detalhada.</p>
+         <div class="flex items-center gap-4"><a href="#" class="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all" style="color: var(--primary);"> Ver Projeto 
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></a>
+         </div>
+        </div>
+       </div><!-- Project 4 -->
+       <div class="project-card theme-card rounded-2xl overflow-hidden">
+        <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-dark), var(--accent));"><span class="text-6xl">🤖</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-2 mb-3"><span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(232, 121, 249, 0.2); color: var(--accent);">AI/ML</span> <span class="px-2 py-1 rounded-md text-xs font-medium" style="background: rgba(168, 85, 247, 0.2); color: var(--secondary);">Python</span>
+         </div>
+         <h3 class="font-display text-xl font-semibold theme-text mb-2">Chatbot Inteligente</h3>
+         <p class="theme-text-secondary text-sm mb-4">Assistente virtual com processamento de linguagem natural e integração com APIs.</p>
+         <div class="flex items-center gap-4"><a href="#" class="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all" style="color: var(--accent);"> Ver Projeto 
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></a>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('skills')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 3 de 7</span> <button onclick="navigateToSection('github')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div>
+     </section><!-- GitHub Repositories Section -->
+     <section id="section-github" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">04</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--secondary);">Capítulo 4</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Repositórios &amp; Código Aberto</h2>
+      </div>
+      <p class="text-lg theme-text-secondary leading-relaxed mb-8">Apaixonado por código aberto e contribuição comunitária. Aqui estão alguns dos meus repositórios principais no GitHub. Clique em qualquer um para explorar o código e contribuir! 🚀</p>
+      <div class="space-y-4 mb-12"><!-- Repo 1 -->
+       <div class="theme-card rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group cursor-pointer">
+        <div class="flex items-start justify-between mb-3">
+         <div class="flex items-start gap-3 flex-1">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-light));">
+           <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+           </svg>
+          </div>
+          <div>
+           <h3 class="font-display text-lg font-semibold theme-text group-hover:gradient-text transition-all mb-1">data-structures-cpp</h3>
+           <p class="text-sm theme-text-secondary mb-3">Implementação completa de estruturas de dados em C++ com exemplos e testes</p>
+           <div class="flex flex-wrap items-center gap-3"><span class="inline-flex items-center gap-1 text-xs theme-text-muted"> <span class="w-2 h-2 rounded-full" style="background: #f34b7d;"></span> C++ </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+             </svg> 1.2k </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+             </svg> 324 </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Repo 2 -->
+       <div class="theme-card rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group cursor-pointer">
+        <div class="flex items-start justify-between mb-3">
+         <div class="flex items-start gap-3 flex-1">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));">
+           <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+           </svg>
+          </div>
+          <div>
+           <h3 class="font-display text-lg font-semibold theme-text group-hover:gradient-text transition-all mb-1">web-ui-components</h3>
+           <p class="text-sm theme-text-secondary mb-3">Biblioteca de componentes UI reutilizáveis em React com Tailwind CSS e Storybook</p>
+           <div class="flex flex-wrap items-center gap-3"><span class="inline-flex items-center gap-1 text-xs theme-text-muted"> <span class="w-2 h-2 rounded-full" style="background: #f1e05a;"></span> JavaScript </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+             </svg> 856 </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+             </svg> 512 </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Repo 3 -->
+       <div class="theme-card rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group cursor-pointer">
+        <div class="flex items-start justify-between mb-3">
+         <div class="flex items-start gap-3 flex-1">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background: linear-gradient(135deg, var(--primary), var(--primary-light));">
+           <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+           </svg>
+          </div>
+          <div>
+           <h3 class="font-display text-lg font-semibold theme-text group-hover:gradient-text transition-all mb-1">algoritmos-python</h3>
+           <p class="text-sm theme-text-secondary mb-3">Soluções de problemas LeetCode com explicações detalhadas e análise de complexidade</p>
+           <div class="flex flex-wrap items-center gap-3"><span class="inline-flex items-center gap-1 text-xs theme-text-muted"> <span class="w-2 h-2 rounded-full" style="background: #3572A5;"></span> Python </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+             </svg> 2.1k </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+             </svg> 743 </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Repo 4 -->
+       <div class="theme-card rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group cursor-pointer">
+        <div class="flex items-start justify-between mb-3">
+         <div class="flex items-start gap-3 flex-1">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background: linear-gradient(135deg, var(--accent), var(--accent-light));">
+           <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+           </svg>
+          </div>
+          <div>
+           <h3 class="font-display text-lg font-semibold theme-text group-hover:gradient-text transition-all mb-1">machine-learning-ml</h3>
+           <p class="text-sm theme-text-secondary mb-3">Projetos de aprendizado de máquina com datasets, modelos e análises preditivas</p>
+           <div class="flex flex-wrap items-center gap-3"><span class="inline-flex items-center gap-1 text-xs theme-text-muted"> <span class="w-2 h-2 rounded-full" style="background: #3572A5;"></span> Python </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+             </svg> 678 </span> <span class="inline-flex items-center gap-1 text-xs theme-text-muted">
+             <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+             </svg> 289 </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- GitHub Stats Highlight -->
+      <div class="grid md:grid-cols-3 gap-4 mb-12">
+       <div class="theme-card rounded-2xl p-6 text-center border border-white/5">
+        <p class="text-3xl font-bold gradient-text mb-2">47</p>
+        <p class="text-sm theme-text-secondary">Repositórios Públicos</p>
+       </div>
+       <div class="theme-card rounded-2xl p-6 text-center border border-white/5">
+        <p class="text-3xl font-bold gradient-text mb-2">1.2k</p>
+        <p class="text-sm theme-text-secondary">Contribuições Este Ano</p>
+       </div>
+       <div class="theme-card rounded-2xl p-6 text-center border border-white/5">
+        <p class="text-3xl font-bold gradient-text mb-2">8</p>
+        <p class="text-sm theme-text-secondary">Contribuições Open Source</p>
+       </div>
+      </div><a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all hover:scale-105" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+       </svg> Ver Mais Repositórios </a>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('projects')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 4 de 7</span> <button onclick="navigateToSection('education')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div>
+     </section>
+     <div class="relative"><span class="chapter-number font-display">04</span>
+      <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--secondary);">Capítulo 4</p>
+      <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Experiência</h2>
+     </div>
+     <div class="relative border-l-2 ml-4 pl-8 space-y-12" style="border-color: var(--lavender);"><!-- Experience 1 -->
+      <div class="timeline-item relative">
+       <div class="theme-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-3"><span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background: var(--turquoise);">Atual</span> <span class="text-sm theme-text-muted">2022 - Presente</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold theme-text mb-1">Senior UX/UI Designer</h3>
+        <p class="font-medium mb-3" style="color: var(--lavender);">Tech Company ABC</p>
+        <p class="theme-text-secondary text-sm leading-relaxed">Liderança de projetos de design, criação de sistemas de design escaláveis e mentoria de designers juniores. Colaboração direta com stakeholders para alinhar visão de produto.</p>
+        <div class="flex flex-wrap gap-2 mt-4"><span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">Figma</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">Design System</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">Liderança</span>
+        </div>
+       </div>
+      </div><!-- Experience 2 -->
+      <div class="timeline-item relative">
+       <div class="theme-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-3"><span class="text-sm theme-text-muted">2020 - 2022</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold theme-text mb-1">UX Designer</h3>
+        <p class="font-medium mb-3" style="color: var(--primary);">Startup XYZ</p>
+        <p class="theme-text-secondary text-sm leading-relaxed">Desenvolvimento de interfaces para aplicativos móveis e web. Condução de pesquisas com usuários e testes de usabilidade para otimização de produtos.</p>
+        <div class="flex flex-wrap gap-2 mt-4"><span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">Mobile</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">UX Research</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">Prototipagem</span>
+        </div>
+       </div>
+      </div><!-- Experience 3 -->
+      <div class="timeline-item relative">
+       <div class="theme-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-3"><span class="text-sm theme-text-muted">2018 - 2020</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold theme-text mb-1">Frontend Developer</h3>
+        <p class="font-medium mb-3" style="color: var(--accent);">Agência Digital</p>
+        <p class="theme-text-secondary text-sm leading-relaxed">Desenvolvimento de sites e aplicações web responsivas. Implementação de animações e interações para melhorar a experiência do usuário.</p>
+        <div class="flex flex-wrap gap-2 mt-4"><span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">React</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">CSS</span> <span class="px-2 py-1 rounded-md text-xs theme-card theme-text-muted">JavaScript</span>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('projects')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+       </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 4 de 6</span> <button onclick="navigateToSection('education')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+       </svg></button>
+     </div> <!-- Education Section -->
+     <section id="section-education" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">05</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--accent);">Capítulo 5</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Formação</h2>
+      </div>
+      <div class="space-y-6 mb-12"><!-- Education 1 -->
+       <div class="theme-card rounded-2xl p-6 flex gap-6">
+        <div class="w-16 h-16 rounded-xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-light));"><span class="text-3xl">🎓</span>
+        </div>
+        <div>
+         <p class="text-sm theme-text-muted mb-1">2014 - 2018</p>
+         <h3 class="font-display text-xl font-semibold theme-text mb-1">Bacharelado em Design</h3>
+         <p class="font-medium mb-2" style="color: var(--turquoise);">Universidade Federal</p>
+         <p class="theme-text-secondary text-sm">Foco em Design de Interfaces e Experiência do Usuário. Projeto de conclusão premiado.</p>
+        </div>
+       </div><!-- Education 2 -->
+       <div class="theme-card rounded-2xl p-6 flex gap-6">
+        <div class="w-16 h-16 rounded-xl flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));"><span class="text-3xl">📚</span>
+        </div>
+        <div>
+         <p class="text-sm theme-text-muted mb-1">2019 - 2020</p>
+         <h3 class="font-display text-xl font-semibold theme-text mb-1">Pós-Graduação em UX Design</h3>
+         <p class="font-medium mb-2" style="color: var(--lavender);">Instituto de Tecnologia</p>
+         <p class="theme-text-secondary text-sm">Especialização em pesquisa com usuários, arquitetura de informação e design centrado no humano.</p>
+        </div>
+       </div>
+      </div><!-- Certifications -->
+      <div>
+       <h3 class="font-display text-xl font-semibold theme-text mb-6">Certificações</h3>
+       <div class="grid md:grid-cols-2 gap-4">
+        <div class="theme-card rounded-xl p-4 flex items-center gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(236, 72, 153, 0.2);"><span class="text-xl">🏆</span>
+         </div>
+         <div>
+          <p class="font-medium theme-text text-sm">Google UX Design Certificate</p>
+          <p class="text-xs theme-text-muted">Google • 2021</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-4 flex items-center gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(20, 184, 166, 0.2);"><span class="text-xl">🏆</span>
+         </div>
+         <div>
+          <p class="font-medium theme-text text-sm">AWS Cloud Practitioner</p>
+          <p class="text-xs theme-text-muted">Amazon • 2022</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-4 flex items-center gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(167, 139, 250, 0.2);"><span class="text-xl">🏆</span>
+         </div>
+         <div>
+          <p class="font-medium theme-text text-sm">Meta Front-End Developer</p>
+          <p class="text-xs theme-text-muted">Meta • 2023</p>
+         </div>
+        </div>
+        <div class="theme-card rounded-xl p-4 flex items-center gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(232, 121, 249, 0.2);"><span class="text-xl">🏆</span>
+         </div>
+         <div>
+          <p class="font-medium theme-text text-sm">Scrum Master Certified</p>
+          <p class="text-xs theme-text-muted">Scrum Alliance • 2023</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('github')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 5 de 7</span> <button onclick="navigateToSection('contact')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Próximo 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div>
+     </section><!-- Contact Section -->
+     <section id="section-contact" class="page-section hidden py-12">
+      <div class="relative"><span class="chapter-number font-display">06</span>
+       <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--turquoise-light);">Capítulo 6</p>
+       <h2 class="font-display text-3xl lg:text-4xl font-bold theme-text mb-8">Contato</h2>
+      </div>
+      <div class="text-center mb-12">
+       <p class="text-xl theme-text-secondary mb-8 max-w-2xl mx-auto">Gostou do que viu? Vamos conversar! Estou sempre aberto a novos projetos e oportunidades.</p>
+       <div class="flex flex-wrap justify-center gap-4 mb-12"><a href="#" class="group flex items-center gap-3 px-6 py-4 theme-card rounded-2xl hover:scale-105 transition-all">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+         </div>
+         <div class="text-left">
+          <p class="text-xs theme-text-muted">E-mail</p>
+          <p id="contact-email" class="font-medium theme-text">seu@email.com</p>
+         </div></a> <a href="#" class="group flex items-center gap-3 px-6 py-4 theme-card rounded-2xl hover:scale-105 transition-all">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--lavender), var(--secondary));">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+         </div>
+         <div class="text-left">
+          <p class="text-xs theme-text-muted">LinkedIn</p>
+          <p class="font-medium theme-text">/in/seuperfil</p>
+         </div></a> <a href="#" class="group flex items-center gap-3 px-6 py-4 theme-card rounded-2xl hover:scale-105 transition-all">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+         </div>
+         <div class="text-left">
+          <p class="text-xs theme-text-muted">GitHub</p>
+          <p class="font-medium theme-text">@seuusuario</p>
+         </div></a>
+       </div>
+      </div><!-- Final CTA -->
+      <div class="text-center theme-card rounded-3xl p-8 lg:p-12" style="background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(167, 139, 250, 0.1), rgba(236, 72, 153, 0.1));">
+       <div class="text-5xl mb-4">
+        🚀
+       </div>
+       <h3 class="font-display text-2xl font-bold theme-text mb-4">Pronto para começar um projeto?</h3>
+       <p class="theme-text-secondary mb-6">Vamos criar algo incrível juntos!</p><button class="px-8 py-4 rounded-full font-semibold text-white transition-all hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, var(--turquoise), var(--lavender), var(--primary)); background-size: 200% 200%; animation: gradient 3s ease infinite;"> Entrar em Contato </button>
+      </div>
+      <style>
+            @keyframes gradient {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+          </style>
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-white/10"><button onclick="navigateToSection('education')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> Anterior </button> <span class="text-sm theme-text-muted">Página 6 de 7</span> <button onclick="navigateToSection('cover')" class="flex items-center gap-2 theme-text-secondary hover:theme-text transition-colors"> Voltar ao Início 
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg></button>
+      </div>
+     </section>
+    </div>
+   </main>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      author_name: 'Seu Nome Aqui',
+      author_title: 'Designer UX/UI & Desenvolvedor',
+      about_text: 'Olá! Sou um profissional apaixonado por criar experiências digitais incríveis. Com anos de experiência no mercado, desenvolvi habilidades que me permitem transformar ideias em realidade.',
+      contact_email: 'seu@email.com',
+      theme: 'dark',
+      current_section: 'cover'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Navigation function
+    function navigateToSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      // Show target section
+      const targetSection = document.getElementById(`section-${sectionId}`);
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+        // Reset animation
+        targetSection.style.animation = 'none';
+        targetSection.offsetHeight; // Trigger reflow
+        targetSection.style.animation = null;
+      }
+      
+      // Update nav items
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        item.classList.add('theme-text-secondary');
+        item.classList.remove('theme-text');
+        if (item.dataset.section === sectionId) {
+          item.classList.add('active');
+          item.classList.remove('theme-text-secondary');
+          item.classList.add('theme-text');
+        }
+      });
+      
+      // Close mobile menu
+      closeMobileMenu();
+      
+      // Scroll to top of content
+      document.querySelector('.content-area').scrollTop = 0;
+      
+      // Update config
+      config.current_section = sectionId;
+      if (window.elementSdk) {
+        window.elementSdk.setConfig({ current_section: sectionId });
+      }
+    }
+    
+    // Theme toggle function
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.classList.contains('dark');
+      
+      if (isDark) {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        config.theme = 'light';
+      } else {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        config.theme = 'dark';
+      }
+      
+      if (window.elementSdk) {
+        window.elementSdk.setConfig({ theme: config.theme });
+      }
+    }
+    
+    // Mobile menu functions
+    function openMobileMenu() {
+      document.getElementById('sidebar').classList.remove('-translate-x-full');
+      document.getElementById('sidebar-overlay').classList.remove('hidden');
+      document.getElementById('mobile-menu-btn').classList.add('open');
+    }
+    
+    function closeMobileMenu() {
+      document.getElementById('sidebar').classList.add('-translate-x-full');
+      document.getElementById('sidebar-overlay').classList.add('hidden');
+      document.getElementById('mobile-menu-btn').classList.remove('open');
+    }
+    
+    // Event listeners
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        openMobileMenu();
+      } else {
+        closeMobileMenu();
+      }
+    });
+    
+    document.getElementById('sidebar-overlay').addEventListener('click', closeMobileMenu);
+    
+    // Theme toggles
+    document.getElementById('desktop-theme-toggle').addEventListener('click', toggleTheme);
+    document.getElementById('mobile-theme-toggle').addEventListener('click', toggleTheme);
+    
+    // Nav item clicks
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        navigateToSection(item.dataset.section);
+      });
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const sections = ['cover', 'about', 'skills', 'projects', 'github', 'education', 'contact'];
+      const currentIndex = sections.indexOf(config.current_section);
+      
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % sections.length;
+        navigateToSection(sections[nextIndex]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
+        navigateToSection(sections[prevIndex]);
+      }
+    });
+    
+    // Update UI based on config
+    async function onConfigChange(newConfig) {
+      // Update name
+      const coverName = document.getElementById('cover-name');
+      if (coverName) {
+        coverName.textContent = newConfig.author_name || defaultConfig.author_name;
+      }
+      
+      // Update title
+      const coverTitle = document.getElementById('cover-title');
+      if (coverTitle) {
+        coverTitle.textContent = newConfig.author_title || defaultConfig.author_title;
+      }
+      
+      // Update about text
+      const aboutText = document.getElementById('about-text');
+      if (aboutText) {
+        aboutText.textContent = newConfig.about_text || defaultConfig.about_text;
+      }
+      
+      // Update contact email
+      const contactEmail = document.getElementById('contact-email');
+      if (contactEmail) {
+        contactEmail.textContent = newConfig.contact_email || defaultConfig.contact_email;
+      }
+      
+      // Update theme
+      const body = document.body;
+      const theme = newConfig.theme || defaultConfig.theme;
+      body.classList.remove('dark', 'light');
+      body.classList.add(theme);
+      
+      // Navigate to section if changed
+      if (newConfig.current_section && newConfig.current_section !== config.current_section) {
+        navigateToSection(newConfig.current_section);
+      }
+      
+      config = { ...config, ...newConfig };
+    }
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['author_name', cfg.author_name || defaultConfig.author_name],
+          ['author_title', cfg.author_title || defaultConfig.author_title],
+          ['about_text', cfg.about_text || defaultConfig.about_text],
+          ['contact_email', cfg.contact_email || defaultConfig.contact_email]
+        ])
+      });
+    }
+    
+    // Initial render
+    onConfigChange(config);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c86e1f4e6456226',t:'MTc3MDE3MzY1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

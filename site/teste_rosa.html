@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Profissional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #EC4899;
+      --primary-light: #F472B6;
+      --primary-dark: #DB2777;
+      --secondary: #A855F7;
+      --secondary-light: #C084FC;
+      --secondary-dark: #9333EA;
+      --accent: #E879F9;
+      --accent-light: #F0ABFC;
+      --accent-dark: #D946EF;
+      --dark-bg: #0F172A;
+      --dark-surface: #1E293B;
+      --dark-card: #334155;
+      --light-bg: #F8FAFC;
+      --light-surface: #FFFFFF;
+      --light-card: #F1F5F9;
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Dark mode (default) */
+    .dark {
+      --bg-primary: var(--dark-bg);
+      --bg-surface: var(--dark-surface);
+      --bg-card: var(--dark-card);
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+    }
+    
+    /* Light mode */
+    .light {
+      --bg-primary: var(--light-bg);
+      --bg-surface: var(--light-surface);
+      --bg-card: var(--light-card);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .bg-surface {
+      background-color: var(--bg-surface);
+    }
+    
+    .bg-card {
+      background-color: var(--bg-card);
+    }
+    
+    .text-secondary {
+      color: var(--text-secondary);
+    }
+    
+    .text-muted {
+      color: var(--text-muted);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(236, 72, 153, 0.6);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .animate-slide-in-left {
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+    .animate-delay-4 { animation-delay: 0.4s; }
+    .animate-delay-5 { animation-delay: 0.5s; }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-surface);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--turquoise);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--turquoise-light);
+    }
+    
+    /* Skill bars */
+    .skill-bar {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      transition: width 1s ease-out;
+    }
+    
+    /* Timeline */
+    .timeline-line {
+      background: linear-gradient(180deg, var(--turquoise) 0%, var(--lavender) 100%);
+    }
+    
+    .timeline-dot {
+      background: var(--turquoise);
+      box-shadow: 0 0 0 4px var(--bg-surface), 0 0 20px rgba(20, 184, 166, 0.5);
+    }
+    
+    /* Cards hover effect */
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .dark .card-hover:hover {
+      box-shadow: 0 20px 40px rgba(20, 184, 166, 0.15);
+    }
+    
+    /* Quote block */
+    .quote-block {
+      border-left: 4px solid var(--lavender);
+      background: linear-gradient(90deg, rgba(167, 139, 250, 0.1) 0%, transparent 100%);
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Section divider */
+    .section-divider {
+      background: linear-gradient(90deg, transparent 0%, var(--turquoise) 50%, transparent 100%);
+      height: 1px;
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    
+    /* Badge styles */
+    .badge {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+    
+    /* Achievement card */
+    .achievement-card {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+    
+    /* Project modal */
+    .modal-overlay {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Floating elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Nav link underline effect */
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Photo frame */
+    .photo-frame {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 4px;
+    }
+    
+    .photo-inner {
+      background: var(--bg-surface);
+      padding: 4px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body dark">
+  <div id="app" class="min-h-full w-full overflow-auto"><!-- Header -->
+   <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-surface backdrop-blur-lg bg-opacity-90 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16"><!-- Logo --> <a href="#hero" class="font-display font-bold text-xl gradient-text"> <span id="nav-name">Portfolio</span> </a> <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8"><a href="#sobre" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Sobre</a> <a href="#projetos" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Projetos</a> <a href="#habilidades" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Habilidades</a> <a href="#timeline" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Linha do Tempo</a> <a href="#certificados" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Certificados</a> <a href="#contato" class="nav-link text-secondary hover:text-teal-400 transition-colors text-sm font-medium">Contato</a>
+      </nav><!-- Theme Toggle & Mobile Menu Button -->
+      <div class="flex items-center gap-4"><button id="theme-toggle" class="p-2 rounded-lg bg-card hover:bg-teal-500/20 transition-colors" aria-label="Alternar tema">
+        <svg id="moon-icon" class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg></button> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-card hover:bg-teal-500/20 transition-colors" aria-label="Menu">
+        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg></button>
+      </div>
+     </div>
+    </div><!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu fixed top-16 right-0 bottom-0 w-64 bg-surface border-l border-white/10 md:hidden">
+     <nav class="flex flex-col p-6 gap-4"><a href="#sobre" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Sobre</a> <a href="#projetos" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Projetos</a> <a href="#habilidades" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Habilidades</a> <a href="#timeline" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Linha do Tempo</a> <a href="#certificados" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Certificados</a> <a href="#contato" class="mobile-nav-link text-secondary hover:text-teal-400 transition-colors text-lg font-medium py-2">Contato</a>
+     </nav>
+    </div>
+   </header><!-- Hero Section -->
+   <section id="hero" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden"><!-- Background decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+     <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+     <div class="animate-fade-in-up opacity-0">
+      <p class="text-teal-400 font-medium mb-4 tracking-wider uppercase text-sm">Bem-vindo ao meu portfólio</p>
+     </div>
+     <h1 id="hero-name" class="font-display text-4xl sm:text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up opacity-0 animate-delay-1"><span class="gradient-text">Seu Nome</span></h1>
+     <p id="hero-title" class="text-xl sm:text-2xl md:text-3xl text-secondary mb-8 animate-fade-in-up opacity-0 animate-delay-2">Desenvolvedor Full Stack</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 animate-delay-3"><a href="#projetos" class="px-8 py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-primary/25"> Ver Projetos </a> <a href="#contato" class="px-8 py-3 border border-primary text-primary hover:bg-primary/10 font-semibold rounded-lg transition-all"> Entre em Contato </a>
+     </div><!-- Scroll indicator -->
+     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Sobre Section -->
+   <section id="sobre" class="py-20 relative">
+    <div class="section-divider mb-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Sobre Mim</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Conheça um pouco mais sobre minha trajetória e paixões</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center"><!-- Photo -->
+      <div class="flex justify-center">
+       <div class="photo-frame rounded-2xl floating">
+        <div class="photo-inner rounded-xl">
+         <div class="w-64 h-80 sm:w-80 sm:h-96 bg-card rounded-lg flex items-center justify-center">
+          <svg class="w-24 h-24 text-teal-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+      </div><!-- About content -->
+      <div class="space-y-6">
+       <p id="about-text" class="text-secondary text-lg leading-relaxed">Sou um desenvolvedor apaixonado por criar soluções tecnológicas que impactam positivamente a vida das pessoas. Com experiência em desenvolvimento web full stack, busco constantemente aprender novas tecnologias e aprimorar minhas habilidades.</p>
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-card rounded-xl p-4 card-hover">
+         <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+           <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+           </svg>
+          </div>
+          <h3 class="font-semibold">Desenvolvimento</h3>
+         </div>
+         <p class="text-secondary text-sm">Full Stack Web &amp; Mobile</p>
+        </div>
+        <div class="bg-card rounded-xl p-4 card-hover">
+         <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+           <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+           </svg>
+          </div>
+          <h3 class="font-semibold">Inovação</h3>
+         </div>
+         <p class="text-secondary text-sm">Soluções criativas</p>
+        </div>
+        <div class="bg-card rounded-xl p-4 card-hover">
+         <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+           <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+           </svg>
+          </div>
+          <h3 class="font-semibold">Colaboração</h3>
+         </div>
+         <p class="text-secondary text-sm">Trabalho em equipe</p>
+        </div>
+        <div class="bg-card rounded-xl p-4 card-hover">
+         <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+           <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+           </svg>
+          </div>
+          <h3 class="font-semibold">Performance</h3>
+         </div>
+         <p class="text-secondary text-sm">Otimização &amp; Qualidade</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projetos Section -->
+   <section id="projetos" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Projetos</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Alguns dos projetos que desenvolvi e que demonstram minhas habilidades</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project Card 1 -->
+      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+       <div class="aspect-video bg-gradient-to-br from-teal-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+        <svg class="w-16 h-16 text-teal-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <div class="absolute inset-0 bg-teal-500/0 group-hover:bg-teal-500/10 transition-colors"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display font-bold text-xl mb-2">E-commerce Platform</h3>
+        <p class="text-secondary text-sm mb-4">Plataforma completa de e-commerce com carrinho, pagamentos e painel administrativo.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">React</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">Node.js</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">MongoDB</span>
+        </div>
+        <div class="quote-block pl-4 py-2 mb-4">
+         <p class="text-sm text-secondary italic">"Este projeto me ensinou muito sobre arquitetura escalável e UX."</p>
+        </div>
+        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg> Demo </a>
+        </div>
+       </div>
+      </article><!-- Project Card 2 -->
+      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+       <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-teal-500/20 flex items-center justify-center relative overflow-hidden">
+        <svg class="w-16 h-16 text-purple-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <div class="absolute inset-0 bg-purple-500/0 group-hover:bg-purple-500/10 transition-colors"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display font-bold text-xl mb-2">Dashboard Analytics</h3>
+        <p class="text-secondary text-sm mb-4">Sistema de dashboards com visualizações de dados em tempo real e relatórios customizáveis.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">Vue.js</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">D3.js</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">Python</span>
+        </div>
+        <div class="quote-block pl-4 py-2 mb-4">
+         <p class="text-sm text-secondary italic">"Desafio incrível de visualização de grandes volumes de dados."</p>
+        </div>
+        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg> Demo </a>
+        </div>
+       </div>
+      </article><!-- Project Card 3 -->
+      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+       <div class="aspect-video bg-gradient-to-br from-teal-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+        <svg class="w-16 h-16 text-teal-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        <div class="absolute inset-0 bg-teal-500/0 group-hover:bg-teal-500/10 transition-colors"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display font-bold text-xl mb-2">App Mobile Fitness</h3>
+        <p class="text-secondary text-sm mb-4">Aplicativo de acompanhamento fitness com treinos personalizados e tracking de progresso.</p>
+        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">React Native</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">Firebase</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-teal-400">Redux</span>
+        </div>
+        <div class="quote-block pl-4 py-2 mb-4">
+         <p class="text-sm text-secondary italic">"Meu primeiro app mobile - superou 10k downloads!"</p>
+        </div>
+        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg> Demo </a>
+        </div>
+       </div>
+      </article>
+     </div>
+     <div class="text-center mt-12"><button class="px-8 py-3 border border-teal-500 text-teal-400 hover:bg-teal-500/10 font-semibold rounded-lg transition-all"> Ver Todos os Projetos </button>
+     </div>
+    </div>
+   </section><!-- Habilidades Section -->
+   <section id="habilidades" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Habilidades</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Tecnologias e competências que utilizo no dia a dia</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Technical Skills -->
+      <div class="bg-card rounded-2xl p-6">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+         </svg>
+        </div>
+        <h3 class="font-display font-bold text-lg">Técnicas</h3>
+       </div>
+       <div class="space-y-4">
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-sm">JavaScript/TypeScript</span> <span class="text-sm text-teal-400">95%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 95%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-sm">React/Vue</span> <span class="text-sm text-teal-400">90%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-sm">Node.js</span> <span class="text-sm text-teal-400">85%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-sm">Python</span> <span class="text-sm text-teal-400">80%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 80%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Tools -->
+      <div class="bg-card rounded-2xl p-6">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+         </svg>
+        </div>
+        <h3 class="font-display font-bold text-lg">Ferramentas</h3>
+       </div>
+       <div class="flex flex-wrap gap-2"><span class="badge px-3 py-2 rounded-lg text-sm">Git</span> <span class="badge px-3 py-2 rounded-lg text-sm">Docker</span> <span class="badge px-3 py-2 rounded-lg text-sm">VS Code</span> <span class="badge px-3 py-2 rounded-lg text-sm">Figma</span> <span class="badge px-3 py-2 rounded-lg text-sm">AWS</span> <span class="badge px-3 py-2 rounded-lg text-sm">PostgreSQL</span> <span class="badge px-3 py-2 rounded-lg text-sm">MongoDB</span> <span class="badge px-3 py-2 rounded-lg text-sm">Redis</span>
+       </div>
+      </div><!-- Methodologies -->
+      <div class="bg-card rounded-2xl p-6">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+         </svg>
+        </div>
+        <h3 class="font-display font-bold text-lg">Metodologias</h3>
+       </div>
+       <div class="flex flex-wrap gap-2"><span class="badge px-3 py-2 rounded-lg text-sm">Scrum</span> <span class="badge px-3 py-2 rounded-lg text-sm">Kanban</span> <span class="badge px-3 py-2 rounded-lg text-sm">TDD</span> <span class="badge px-3 py-2 rounded-lg text-sm">CI/CD</span> <span class="badge px-3 py-2 rounded-lg text-sm">Clean Code</span> <span class="badge px-3 py-2 rounded-lg text-sm">SOLID</span>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="bg-card rounded-2xl p-6">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+         </svg>
+        </div>
+        <h3 class="font-display font-bold text-lg">Soft Skills</h3>
+       </div>
+       <div class="flex flex-wrap gap-2"><span class="badge px-3 py-2 rounded-lg text-sm">Comunicação</span> <span class="badge px-3 py-2 rounded-lg text-sm">Liderança</span> <span class="badge px-3 py-2 rounded-lg text-sm">Resolução de Problemas</span> <span class="badge px-3 py-2 rounded-lg text-sm">Trabalho em Equipe</span> <span class="badge px-3 py-2 rounded-lg text-sm">Proatividade</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Timeline Section -->
+   <section id="timeline" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Linha do Tempo</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Minha trajetória profissional e acadêmica</p>
+     </div>
+     <div class="relative"><!-- Horizontal timeline container -->
+      <div class="flex items-center gap-4 pb-4"><!-- Left scroll button --> <button id="timeline-scroll-left" class="flex-shrink-0 p-2 rounded-lg bg-card hover:bg-teal-500/20 transition-colors" aria-label="Scroll left">
+        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg></button> <!-- Timeline scroll container -->
+       <div id="timeline-container" class="flex-1 overflow-x-auto scroll-smooth">
+        <div class="flex gap-6 pb-4" style="min-width: min-content;"><!-- Item 1 - Most recent -->
+         <div class="flex-shrink-0 w-80">
+          <div class="relative"><!-- Timeline dot -->
+           <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+            <div class="timeline-dot w-6 h-6 rounded-full"></div>
+            <div class="timeline-line absolute top-6 left-1/2 transform -translate-x-1/2 w-0.5 h-8" style="background: linear-gradient(180deg, var(--turquoise) 0%, transparent 100%);"></div>
+           </div><!-- Card -->
+           <div class="bg-card rounded-xl p-6 card-hover cursor-pointer" onclick="openTimelineModal('exp1')"><span class="text-teal-400 text-sm font-medium">2023 - Presente</span>
+            <h3 class="font-display font-bold text-lg mt-2">Desenvolvedor Sênior</h3>
+            <p class="text-secondary text-sm mt-1">Tech Company XYZ</p>
+            <p class="text-muted text-sm mt-2">Liderança técnica em projetos de grande escala...</p><span class="text-teal-400 text-xs mt-3 inline-block">Clique para ver mais →</span>
+           </div>
+          </div>
+         </div><!-- Item 2 -->
+         <div class="flex-shrink-0 w-80">
+          <div class="relative"><!-- Timeline dot -->
+           <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+            <div class="timeline-dot w-6 h-6 rounded-full"></div>
+            <div class="timeline-line absolute top-6 left-1/2 transform -translate-x-1/2 w-0.5 h-8" style="background: linear-gradient(180deg, var(--turquoise) 0%, transparent 100%);"></div>
+           </div><!-- Card -->
+           <div class="bg-card rounded-xl p-6 card-hover cursor-pointer" onclick="openTimelineModal('exp2')"><span class="text-purple-400 text-sm font-medium">2021 - 2023</span>
+            <h3 class="font-display font-bold text-lg mt-2">Desenvolvedor Pleno</h3>
+            <p class="text-secondary text-sm mt-1">Startup ABC</p>
+            <p class="text-muted text-sm mt-2">Desenvolvimento de features e mentoria...</p><span class="text-teal-400 text-xs mt-3 inline-block">Clique para ver mais →</span>
+           </div>
+          </div>
+         </div><!-- Item 3 -->
+         <div class="flex-shrink-0 w-80">
+          <div class="relative"><!-- Timeline dot -->
+           <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+            <div class="timeline-dot w-6 h-6 rounded-full"></div>
+            <div class="timeline-line absolute top-6 left-1/2 transform -translate-x-1/2 w-0.5 h-8" style="background: linear-gradient(180deg, var(--turquoise) 0%, transparent 100%);"></div>
+           </div><!-- Card -->
+           <div class="bg-card rounded-xl p-6 card-hover cursor-pointer" onclick="openTimelineModal('exp3')"><span class="text-teal-400 text-sm font-medium">2019 - 2021</span>
+            <h3 class="font-display font-bold text-lg mt-2">Desenvolvedor Júnior</h3>
+            <p class="text-secondary text-sm mt-1">Agência Digital</p>
+            <p class="text-muted text-sm mt-2">Início da carreira com foco em frontend...</p><span class="text-teal-400 text-xs mt-3 inline-block">Clique para ver mais →</span>
+           </div>
+          </div>
+         </div><!-- Item 4 - Oldest -->
+         <div class="flex-shrink-0 w-80">
+          <div class="relative"><!-- Timeline dot -->
+           <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+            <div class="timeline-dot w-6 h-6 rounded-full"></div>
+           </div><!-- Card -->
+           <div class="bg-card rounded-xl p-6 card-hover cursor-pointer" onclick="openTimelineModal('edu1')"><span class="text-purple-400 text-sm font-medium">2015 - 2019</span>
+            <h3 class="font-display font-bold text-lg mt-2">Bacharelado em Ciência da Computação</h3>
+            <p class="text-secondary text-sm mt-1">Universidade Federal</p>
+            <p class="text-muted text-sm mt-2">Formação acadêmica com ênfase em desenvolvimento...</p><span class="text-teal-400 text-xs mt-3 inline-block">Clique para ver mais →</span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Right scroll button --> <button id="timeline-scroll-right" class="flex-shrink-0 p-2 rounded-lg bg-card hover:bg-teal-500/20 transition-colors" aria-label="Scroll right">
+        <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div><!-- Timeline line (horizontal) -->
+      <div class="relative h-1 bg-white/5 rounded-full">
+       <div class="absolute inset-0 timeline-line rounded-full"></div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Certificados Section -->
+   <section id="certificados" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Certificados</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Certificações e cursos concluídos</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Certificate 1 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">AWS Certified Developer</h3>
+         <p class="text-secondary text-sm mt-1">Amazon Web Services</p>
+         <p class="text-muted text-xs mt-2">2023</p>
+        </div>
+       </div>
+      </div><!-- Certificate 2 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">Meta Frontend Developer</h3>
+         <p class="text-secondary text-sm mt-1">Meta (Coursera)</p>
+         <p class="text-muted text-xs mt-2">2022</p>
+        </div>
+       </div>
+      </div><!-- Certificate 3 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">Google UX Design</h3>
+         <p class="text-secondary text-sm mt-1">Google (Coursera)</p>
+         <p class="text-muted text-xs mt-2">2021</p>
+        </div>
+       </div>
+      </div><!-- Certificate 4 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">MongoDB Developer</h3>
+         <p class="text-secondary text-sm mt-1">MongoDB University</p>
+         <p class="text-muted text-xs mt-2">2021</p>
+        </div>
+       </div>
+      </div><!-- Certificate 5 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">Scrum Master</h3>
+         <p class="text-secondary text-sm mt-1">Scrum.org</p>
+         <p class="text-muted text-xs mt-2">2020</p>
+        </div>
+       </div>
+      </div><!-- Certificate 6 -->
+      <div class="bg-card rounded-xl p-6 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold">Docker Essentials</h3>
+         <p class="text-secondary text-sm mt-1">Docker</p>
+         <p class="text-muted text-xs mt-2">2020</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Conquistas Section -->
+   <section id="conquistas" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Conquistas &amp; Premiações</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Reconhecimentos ao longo da minha carreira</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Achievement 1 -->
+      <div class="achievement-card rounded-2xl p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-4xl">
+         🏆
+        </div>
+        <div>
+         <h3 class="font-display font-bold">Hackathon Winner</h3>
+         <p class="text-teal-400 text-sm">1º Lugar - Tech Challenge 2023</p>
+        </div>
+       </div>
+       <p class="text-secondary text-sm">Desenvolvimento de solução inovadora para acessibilidade digital em 48 horas.</p>
+      </div><!-- Achievement 2 -->
+      <div class="achievement-card rounded-2xl p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-4xl">
+         ⭐
+        </div>
+        <div>
+         <h3 class="font-display font-bold">Employee of the Year</h3>
+         <p class="text-purple-400 text-sm">Tech Company XYZ - 2022</p>
+        </div>
+       </div>
+       <p class="text-secondary text-sm">Reconhecimento por liderança técnica e impacto positivo na equipe.</p>
+      </div><!-- Achievement 3 -->
+      <div class="achievement-card rounded-2xl p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-4xl">
+         🎤
+        </div>
+        <div>
+         <h3 class="font-display font-bold">Tech Speaker</h3>
+         <p class="text-teal-400 text-sm">DevConf 2023</p>
+        </div>
+       </div>
+       <p class="text-secondary text-sm">Palestrante em conferência com mais de 500 participantes sobre arquitetura frontend.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Mulheres na Tech Section -->
+   <section id="mulheres-tech" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Mulheres na Computação</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Celebrando força, criatividade e inovação feminina na tecnologia</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Card 1 - Empowerment -->
+      <div class="bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-rose-500/10 rounded-2xl p-8 card-hover border border-pink-500/20">
+       <div class="mb-6">
+        <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center">
+         <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Empoderamento</h3>
+       <p class="text-secondary leading-relaxed mb-4">Acredito que mulheres na tech devem ocupar espaços de liderança, decisão e inovação. Cada código que escrevo é um passo em direção a mais representatividade.</p>
+       <div class="flex items-center gap-2 text-pink-400 text-sm font-medium"><span>Celebrando conquistas</span>
+        <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+       </div>
+      </div><!-- Card 2 - Mentorship -->
+      <div class="bg-gradient-to-br from-purple-500/10 via-violet-500/10 to-pink-500/10 rounded-2xl p-8 card-hover border border-purple-500/20">
+       <div class="mb-6">
+        <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center">
+         <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+         </svg>
+        </div>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Mentorias</h3>
+       <p class="text-secondary leading-relaxed mb-4">Comprometida em mentoriar e apoiar outras mulheres em suas jornadas na tecnologia, criando uma rede de apoio mútuo e crescimento.</p>
+       <div class="flex items-center gap-2 text-purple-400 text-sm font-medium"><span>Impactando vidas</span>
+        <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+       </div>
+      </div><!-- Card 3 - Diversidade -->
+      <div class="bg-gradient-to-br from-rose-500/10 via-pink-500/10 to-purple-500/10 rounded-2xl p-8 card-hover border border-rose-500/20">
+       <div class="mb-6">
+        <div class="w-16 h-16 bg-rose-500/20 rounded-2xl flex items-center justify-center">
+         <svg class="w-8 h-8 text-rose-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 00-9.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+         </svg>
+        </div>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Diversidade &amp; Inclusão</h3>
+       <p class="text-secondary leading-relaxed mb-4">Promovo ambientes inclusivos onde todas as vozes são ouvidas, valorizadas e reconhecidas como essenciais para inovação.</p>
+       <div class="flex items-center gap-2 text-rose-400 text-sm font-medium"><span>Unindo diferentes perspectivas</span>
+        <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+       </div>
+      </div>
+     </div><!-- Stats Row -->
+     <div class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="bg-card rounded-xl p-6 text-center card-hover">
+       <p class="text-3xl font-bold gradient-text mb-2">50+</p>
+       <p class="text-secondary text-sm">Mulheres Mentorizadas</p>
+      </div>
+      <div class="bg-card rounded-xl p-6 text-center card-hover">
+       <p class="text-3xl font-bold gradient-text mb-2">15+</p>
+       <p class="text-secondary text-sm">Palestras sobre Diversidade</p>
+      </div>
+      <div class="bg-card rounded-xl p-6 text-center card-hover">
+       <p class="text-3xl font-bold gradient-text mb-2">100%</p>
+       <p class="text-secondary text-sm">Comprometimento com Inclusão</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Inspirações Section -->
+   <section id="inspiracoes" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Minhas Musas Femininas</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Mulheres que me inspiram e moldam minha jornada</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Inspiração 1 -->
+      <div class="bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-2xl p-8 card-hover border border-pink-500/30">
+       <div class="flex items-start gap-6">
+        <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-2">Criatividade Sem Limites</h3>
+         <p class="text-secondary leading-relaxed mb-3">Mulheres tech que pensam fora da caixa e criam soluções inovadoras que transformam o mundo. Suas ideias ousadas me motivam a não ter medo de experimentar.</p>
+         <p class="text-pink-400 text-sm font-medium italic">"Inovação não tem gênero, tem coragem."</p>
+        </div>
+       </div>
+      </div><!-- Inspiração 2 -->
+      <div class="bg-gradient-to-r from-purple-500/10 to-violet-500/10 rounded-2xl p-8 card-hover border border-purple-500/30">
+       <div class="flex items-start gap-6">
+        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-2">Liderança Inspiradora</h3>
+         <p class="text-secondary leading-relaxed mb-3">CEOs, tech leads e cofundadoras que abrem caminhos e criam oportunidades. Elas me mostram que é possível ser feminina, forte e admirável.</p>
+         <p class="text-purple-400 text-sm font-medium italic">"Liderança �� inspirar através do exemplo."</p>
+        </div>
+       </div>
+      </div><!-- Inspiração 3 -->
+      <div class="bg-gradient-to-r from-rose-500/10 to-pink-500/10 rounded-2xl p-8 card-hover border border-rose-500/30">
+       <div class="flex items-start gap-6">
+        <div class="w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-2">Solidariedade Sistêmica</h3>
+         <p class="text-secondary leading-relaxed mb-3">Mulheres que levantam outras mulheres. Que compartilham conhecimento, oportunidades e criam redes de apoio genuínas na tech.</p>
+         <p class="text-rose-400 text-sm font-medium italic">"Juntas somos mais fortes e mais criativas."</p>
+        </div>
+       </div>
+      </div><!-- Inspiração 4 -->
+      <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-2xl p-8 card-hover border border-violet-500/30">
+       <div class="flex items-start gap-6">
+        <div class="w-20 h-20 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-2">Resiliência &amp; Autossuperação</h3>
+         <p class="text-secondary leading-relaxed mb-3">Mulheres que enfrentam desafios e saem ainda mais fortes. Que fracassam, aprendem e voltam com mais conhecimento e determinação.</p>
+         <p class="text-violet-400 text-sm font-medium italic">"A dificuldade é apenas o começo do sucesso."</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Missão Feminina Section -->
+   <section id="missao-feminina" class="py-20 bg-surface relative overflow-hidden"><!-- Background decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+     <div class="absolute top-10 right-10 w-72 h-72 bg-pink-500 rounded-full blur-3xl"></div>
+     <div class="absolute bottom-10 left-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="grid md:grid-cols-2 gap-12 items-center"><!-- Left side - Text -->
+      <div><span class="text-pink-400 text-sm font-medium tracking-wider uppercase">Minha Missão</span>
+       <h2 class="font-display text-3xl sm:text-4xl font-bold mt-3 mb-6">Construir um Futuro Mais Inclusivo na Tech</h2>
+       <p class="text-secondary text-lg leading-relaxed mb-6">Minha missão vai além de escrever código. É usar minha voz, minha experiência e minha posição para criar espaços onde mulheres possam crescer, se expressar e alcançar seu máximo potencial.</p>
+       <div class="space-y-4 mb-8">
+        <div class="flex items-start gap-4">
+         <div class="w-6 h-6 rounded-full bg-pink-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+          <svg class="w-4 h-4 text-pink-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="font-semibold mb-1">Representatividade Ativa</h3>
+          <p class="text-secondary text-sm">Ocupar espaços e visibilizar outras mulheres em cargos de destaque.</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+          <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="font-semibold mb-1">Educação e Mentorias</h3>
+          <p class="text-secondary text-sm">Compartilhar conhecimento e guiar outras mulheres em suas jornadas.</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-6 h-6 rounded-full bg-rose-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+          <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="font-semibold mb-1">Advocacy &amp; Apoio</h3>
+          <p class="text-secondary text-sm">Defender políticas inclusivas e oportunidades equitativas.</p>
+         </div>
+        </div>
+       </div><a href="#contato" class="inline-block px-8 py-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-pink-500/25"> Vamos Conversar Sobre Isso </a>
+      </div><!-- Right side - Visual -->
+      <div class="relative">
+       <div class="bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-rose-500/10 rounded-3xl p-8 border border-pink-500/20">
+        <div class="space-y-6">
+         <div class="flex items-center gap-4 p-4 bg-card rounded-xl">
+          <div class="text-3xl">
+           👩‍💻
+          </div>
+          <div>
+           <p class="font-semibold text-sm">Desenvolvendo</p>
+           <p class="text-secondary text-xs">Código e Mulheres</p>
+          </div>
+         </div>
+         <div class="flex items-center gap-4 p-4 bg-card rounded-xl">
+          <div class="text-3xl">
+           🌸
+          </div>
+          <div>
+           <p class="font-semibold text-sm">Florescendo</p>
+           <p class="text-secondary text-xs">Na Tecnologia</p>
+          </div>
+         </div>
+         <div class="flex items-center gap-4 p-4 bg-card rounded-xl">
+          <div class="text-3xl">
+           💪
+          </div>
+          <div>
+           <p class="font-semibold text-sm">Empoderando</p>
+           <p class="text-secondary text-xs">Comunidades</p>
+          </div>
+         </div>
+         <div class="flex items-center gap-4 p-4 bg-card rounded-xl">
+          <div class="text-3xl">
+           🚀
+          </div>
+          <div>
+           <p class="font-semibold text-sm">Liderando</p>
+           <p class="text-secondary text-xs">Inovação Feminina</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Galeria de Artes Section -->
+   <section id="galeria-artes" class="py-20 bg-surface relative overflow-hidden"><!-- Abstract artistic background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+     <svg class="absolute w-full h-full" viewbox="0 0 1200 800" preserveaspectratio="none"><defs>
+       <filter id="artistic-blur">
+        <fegaussianblur in="SourceGraphic" stddeviation="3" />
+       </filter>
+       <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#EC4899;stop-opacity:0.3" />
+        <stop offset="50%" style="stop-color:#A78BFA;stop-opacity:0.2" />
+        <stop offset="100%" style="stop-color:#14B8A6;stop-opacity:0.3" />
+       </lineargradient>
+      </defs> <!-- Artistic brush strokes --> <path d="M 0 100 Q 300 50, 600 100 T 1200 100" stroke="url(#grad1)" stroke-width="80" fill="none" filter="url(#artistic-blur)" /> <path d="M 1200 300 Q 900 350, 600 300 T 0 300" stroke="url(#grad1)" stroke-width="60" fill="none" filter="url(#artistic-blur)" /> <path d="M 0 500 Q 300 600, 600 500 T 1200 500" stroke="url(#grad1)" stroke-width="100" fill="none" filter="url(#artistic-blur)" /> <!-- Abstract circles --> <circle cx="150" cy="200" r="120" fill="#EC4899" opacity="0.1" filter="url(#artistic-blur)" /> <circle cx="1050" cy="600" r="150" fill="#A78BFA" opacity="0.1" filter="url(#artistic-blur)" /> <circle cx="600" cy="750" r="100" fill="#14B8A6" opacity="0.1" filter="url(#artistic-blur)" />
+     </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Galeria de Artes</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Minha jornada criativa através de pintura, desenho e expressão visual</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Art Piece 1 -->
+      <div class="group cursor-pointer">
+       <div class="relative overflow-hidden rounded-2xl aspect-square bg-card card-hover mb-4">
+        <div class="absolute inset-0 bg-gradient-to-br from-pink-600 via-purple-600 to-rose-600 opacity-80"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+         <svg class="w-24 h-24 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white font-semibold">Clique para ver mais</span>
+        </div>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Série: Emoções em Cor</h3>
+       <p class="text-secondary text-sm mb-3">Exploração abstrata das emoções humanas através de cores vibrantes e formas livres.</p>
+       <div class="flex items-center gap-2 text-pink-400 text-sm"><span>🎨 Acrílica em tela</span>
+       </div>
+      </div><!-- Art Piece 2 -->
+      <div class="group cursor-pointer">
+       <div class="relative overflow-hidden rounded-2xl aspect-square bg-card card-hover mb-4">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 opacity-80"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+         <svg class="w-24 h-24 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+         </svg>
+        </div>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white font-semibold">Clique para ver mais</span>
+        </div>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Retratos Digitais</h3>
+       <p class="text-secondary text-sm mb-3">Retratos e estudos de personas criadas digitalmente, explorando identidade visual.</p>
+       <div class="flex items-center gap-2 text-indigo-400 text-sm"><span>💻 Digital Art / Procreate</span>
+       </div>
+      </div><!-- Art Piece 3 -->
+      <div class="group cursor-pointer">
+       <div class="relative overflow-hidden rounded-2xl aspect-square bg-card card-hover mb-4">
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 opacity-80"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+         <svg class="w-24 h-24 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+         </svg>
+        </div>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white font-semibold">Clique para ver mais</span>
+        </div>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Ilustrações Narrativas</h3>
+       <p class="text-secondary text-sm mb-3">Histórias contadas através de ilustração, fusion entre narrativa visual e poesia.</p>
+       <div class="flex items-center gap-2 text-orange-400 text-sm"><span>✏️ Aquarela &amp; Tinta</span>
+       </div>
+      </div>
+     </div><!-- Featured artwork -->
+     <div class="mt-16 bg-card rounded-3xl overflow-hidden card-hover">
+      <div class="grid md:grid-cols-2 gap-8 p-8">
+       <div class="flex flex-col justify-center"><span class="text-pink-400 text-sm font-medium tracking-wider uppercase">Obra em destaque</span>
+        <h3 class="font-display text-2xl font-bold mt-3 mb-4">Mulheres na Tela</h3>
+        <p class="text-secondary leading-relaxed mb-4">Uma série de 12 trabalhos que celebram a força, beleza e complexidade das mulheres. Cada pintura é um retrato emocional, uma exploração da identidade feminina através de cores ousadas e linhas expressivas.</p>
+        <p class="text-secondary text-sm mb-6">Esta coleção foi exibida em 3 galerias e recebeu menção honrosa em festival de arte contemporânea.</p>
+        <div class="flex flex-wrap gap-3"><span class="badge px-4 py-2 rounded-lg text-sm text-pink-400">Óleo sobre tela</span> <span class="badge px-4 py-2 rounded-lg text-sm text-pink-400">2022-2023</span> <span class="badge px-4 py-2 rounded-lg text-sm text-pink-400">Série de 12</span>
+        </div>
+       </div>
+       <div class="relative">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-rose-500">
+         <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-32 h-32 text-white/20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Cinema & Audiovisual Section -->
+   <section id="cinema-audiovisual" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Cinema &amp; Audiovisual</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Explorando narrativas visuais através do movimento e som</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center mb-16"><!-- Left side - Video showcase -->
+      <div class="relative">
+       <div class="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-600 to-blue-600 card-hover group">
+        <div class="absolute inset-0 flex items-center justify-center">
+         <div class="bg-white/20 rounded-full p-4 group-hover:bg-white/30 transition-all">
+          <svg class="w-12 h-12 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
+          </svg>
+         </div>
+        </div>
+       </div>
+       <p class="text-secondary text-sm mt-3 text-center">Curta-metragem: "Cores da Mente" | 8 min</p>
+      </div><!-- Right side - Description -->
+      <div>
+       <h3 class="font-display text-2xl font-bold mb-4">Contando Histórias em Movimento</h3>
+       <p class="text-secondary leading-relaxed mb-6">Minha paixão pelo cinema vai além de assistir. Produzo conteúdo audiovisual que mescla minha formação em computação com criatividade artística.</p>
+       <div class="space-y-4">
+        <div class="flex gap-4">
+         <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4m0 0h4a1 1 0 011 1v3H3V5a1 1 0 011-1h4m0 0V3a1 1 0 011-1h2a1 1 0 011 1v1m0 0h3" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-semibold mb-1">Direção &amp; Cinematografia</h4>
+          <p class="text-secondary text-sm">Direção de curtas e conteúdo visual com ênfase em narrativa e estética</p>
+         </div>
+        </div>
+        <div class="flex gap-4">
+         <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-semibold mb-1">Edição &amp; Pós-produção</h4>
+          <p class="text-secondary text-sm">Edição profissional com Adobe Premiere e efeitos especiais em After Effects</p>
+         </div>
+        </div>
+        <div class="flex gap-4">
+         <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 15.536L9 21.072M9 9l6.536-6.536m0 0l3.536-3.536a2.5 2.5 0 113.536 3.536L18.536 9m0 0l-9 9m0-18L9 9m0 0L3 3m0 0a2.5 2.5 0 113.536 3.536L9 9" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-semibold mb-1">Motion Graphics</h4>
+          <p class="text-secondary text-sm">Criação de animaç��es e motion design para conteúdo digital</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Portfolio Cards -->
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-card rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center relative group">
+        <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4m0 0h4a1 1 0 011 1v3H3V5a1 1 0 011-1h4m0 0V3a1 1 0 011-1h2a1 1 0 011 1v1m0 0h3" />
+        </svg>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white text-sm font-semibold">Assistir</span>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 class="font-semibold mb-2">Cores da Mente</h3>
+        <p class="text-secondary text-sm mb-3">Curta-metragem | 8 minutos</p>
+        <p class="text-muted text-xs">Narrativa experimental sobre sinestesia e percepção de cores</p>
+       </div>
+      </div>
+      <div class="bg-card rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-pink-600 to-rose-600 flex items-center justify-center relative group">
+        <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4m0 0h4a1 1 0 011 1v3H3V5a1 1 0 011-1h4m0 0V3a1 1 0 011-1h2a1 1 0 011 1v1m0 0h3" />
+        </svg>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white text-sm font-semibold">Assistir</span>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 class="font-semibold mb-2">Mulheres em Frame</h3>
+        <p class="text-secondary text-sm mb-3">Documentário | 15 minutos</p>
+        <p class="text-muted text-xs">Retratos de mulheres na tecnologia e suas jornadas</p>
+       </div>
+      </div>
+      <div class="bg-card rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center relative group">
+        <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4m0 0h4a1 1 0 011 1v3H3V5a1 1 0 011-1h4m0 0V3a1 1 0 011-1h2a1 1 0 011 1v1m0 0h3" />
+        </svg>
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"><span class="text-white text-sm font-semibold">Assistir</span>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 class="font-semibold mb-2">Code &amp; Creativity</h3>
+        <p class="text-secondary text-sm mb-3">Web Series | 5 episódios</p>
+        <p class="text-muted text-xs">Série sobre a intersecção entre código, arte e inovação</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Filosofia Criativa Section -->
+   <section id="filosofia-criativa" class="py-20 bg-surface relative overflow-hidden"><!-- Abstract creative background with artistic elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
+     <svg class="absolute w-full h-full" viewbox="0 0 1400 900" preserveaspectratio="none"><defs>
+       <radialgradient id="creative-gradient" cx="50%" cy="50%">
+        <stop offset="0%" style="stop-color:#EC4899;stop-opacity:0.2" />
+        <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:0" />
+       </radialgradient>
+       <filter id="creative-filter">
+        <fegaussianblur in="SourceGraphic" stddeviation="4" />
+        <fedisplacementmap in="SourceGraphic" scale="5" />
+       </filter>
+      </defs> <!-- Artistic paint splashes --> <ellipse cx="200" cy="150" rx="200" ry="150" fill="url(#creative-gradient)" filter="url(#creative-filter)" /> <ellipse cx="1100" cy="750" rx="250" ry="180" fill="url(#creative-gradient)" filter="url(#creative-filter)" /> <!-- Color blocks --> <rect x="50" y="600" width="150" height="150" fill="#EC4899" opacity="0.08" filter="url(#creative-filter)" /> <rect x="1200" y="100" width="180" height="120" fill="#A78BFA" opacity="0.08" filter="url(#creative-filter)" /> <!-- Flowing lines --> <polyline points="0,200 350,150 700,250 1050,120 1400,300" stroke="#14B8A6" stroke-width="40" fill="none" opacity="0.08" filter="url(#creative-filter)" />
+     </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Filosofia Criativa</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Minha visão sobre arte, tecnologia e sua fusão infinita</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center"><!-- Philosophy text -->
+      <div class="order-2 md:order-1">
+       <div class="space-y-6">
+        <div class="quote-block pl-6 py-4">
+         <p class="text-lg font-medium leading-relaxed">"A criatividade não é exclusiva dos artistas. Todo desenvolvedor é um artista, toda mulher em tech é uma visionária que pinta o futuro com código."</p>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-3">Convergência de Mundos</h3>
+         <p class="text-secondary leading-relaxed">Para mim, arte e tecnologia não são opostos - são complementos perfeitos. Quando programo, estou criando estrutura. Quando pinto, estou criando emoção. Quando combino ambas, crio magia.</p>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-3">Expressão Autêntica</h3>
+         <p class="text-secondary leading-relaxed">Acredito que cada pessoa tem uma voz única, uma perspectiva única. Minha missão é usar tecnologia para amplificar essas vozes, especialmente as das mulheres, para criar representatividade genuína.</p>
+        </div>
+        <div>
+         <h3 class="font-display text-xl font-bold mb-3">Liberdade Criativa</h3>
+         <p class="text-secondary leading-relaxed">Sem limitações técnicas, somos livres para sonhar. E sem limitações sociais, mulheres são livres para criar. Isso é o que eu busco em cada projeto.</p>
+        </div>
+       </div>
+      </div><!-- Philosophy visual -->
+      <div class="order-1 md:order-2">
+       <div class="relative"><!-- Main card -->
+        <div class="bg-card rounded-3xl p-8 card-hover relative z-10">
+         <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-gradient-to-br from-pink-500/20 to-rose-500/20 rounded-xl p-4 text-center">
+           <div class="text-2xl mb-2">
+            🎨
+           </div>
+           <p class="text-sm font-semibold">Criatividade</p>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-xl p-4 text-center">
+           <div class="text-2xl mb-2">
+            💻
+           </div>
+           <p class="text-sm font-semibold">Tecnologia</p>
+          </div>
+          <div class="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl p-4 text-center">
+           <div class="text-2xl mb-2">
+            ✨
+           </div>
+           <p class="text-sm font-semibold">Inovação</p>
+          </div>
+          <div class="bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-xl p-4 text-center">
+           <div class="text-2xl mb-2">
+            🌟
+           </div>
+           <p class="text-sm font-semibold">Autenticidade</p>
+          </div>
+         </div><!-- Stats/Values -->
+         <div class="space-y-3">
+          <div class="flex items-center justify-between"><span class="text-sm font-medium">Paixão por Arte</span>
+           <div class="w-24 h-2 bg-white/10 rounded-full overflow-hidden">
+            <div class="w-4/5 h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"></div>
+           </div>
+          </div>
+          <div class="flex items-center justify-between"><span class="text-sm font-medium">Habilidade Técnica</span>
+           <div class="w-24 h-2 bg-white/10 rounded-full overflow-hidden">
+            <div class="w-5/5 h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
+           </div>
+          </div>
+          <div class="flex items-center justify-between"><span class="text-sm font-medium">Visão Feminista</span>
+           <div class="w-24 h-2 bg-white/10 rounded-full overflow-hidden">
+            <div class="w-5/5 h-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full"></div>
+           </div>
+          </div>
+          <div class="flex items-center justify-between"><span class="text-sm font-medium">Desejo de Impacto</span>
+           <div class="w-24 h-2 bg-white/10 rounded-full overflow-hidden">
+            <div class="w-5/5 h-full bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full"></div>
+           </div>
+          </div>
+         </div>
+        </div><!-- Decorative elements -->
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-pink-500/10 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+       </div>
+      </div>
+     </div><!-- Inspiration sources -->
+     <div class="mt-20 grid md:grid-cols-3 gap-6">
+      <div class="bg-card rounded-2xl p-6 card-hover border border-pink-500/20">
+       <div class="text-3xl mb-3">
+        🌍
+       </div>
+       <h3 class="font-semibold mb-2">Mundo ao Redor</h3>
+       <p class="text-secondary text-sm">Inspiração vem da natureza, arquitetura, pessoas e suas histórias cotidianas.</p>
+      </div>
+      <div class="bg-card rounded-2xl p-6 card-hover border border-purple-500/20">
+       <div class="text-3xl mb-3">
+        👥
+       </div>
+       <h3 class="font-semibold mb-2">Conexões Humanas</h3>
+       <p class="text-secondary text-sm">As histórias e perspectivas das pessoas que conheço moldam minha criatividade.</p>
+      </div>
+      <div class="bg-card rounded-2xl p-6 card-hover border border-teal-500/20">
+       <div class="text-3xl mb-3">
+        🔮
+       </div>
+       <h3 class="font-semibold mb-2">O Futuro</h3>
+       <p class="text-secondary text-sm">Imaginação sobre possibilidades e potencial infinito que a criatividade possibilita.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Hobbies Section -->
+   <section id="hobbies" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Hobbies &amp; Interesses</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">O que eu faço quando não estou codando</p>
+     </div>
+     <div class="flex flex-wrap justify-center gap-6">
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        📚
+       </div>
+       <h3 class="font-semibold text-sm">Leitura</h3>
+      </div>
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        🎮
+       </div>
+       <h3 class="font-semibold text-sm">Games</h3>
+      </div>
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        🎵
+       </div>
+       <h3 class="font-semibold text-sm">Música</h3>
+      </div>
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        ✈️
+       </div>
+       <h3 class="font-semibold text-sm">Viagens</h3>
+      </div>
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        🏃
+       </div>
+       <h3 class="font-semibold text-sm">Corrida</h3>
+      </div>
+      <div class="bg-card rounded-2xl p-6 text-center card-hover w-36">
+       <div class="text-4xl mb-3">
+        ☕
+       </div>
+       <h3 class="font-semibold text-sm">Café</h3>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contato Section -->
+   <section id="contato" class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Vamos Conversar?</span></h2>
+      <p class="text-secondary max-w-2xl mx-auto">Estou sempre aberto a novas oportunidades e conexões</p>
+     </div>
+     <div class="flex flex-wrap justify-center gap-6"><a id="email-link" href="mailto:seu@email.com" class="bg-card rounded-2xl p-8 card-hover flex flex-col items-center gap-4 min-w-48 group">
+       <div class="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center group-hover:bg-teal-500/30 transition-colors">
+        <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <div class="text-center">
+        <h3 class="font-semibold">Email</h3>
+        <p id="email-text" class="text-secondary text-sm">seu@email.com</p>
+       </div></a> <a id="github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" class="bg-card rounded-2xl p-8 card-hover flex flex-col items-center gap-4 min-w-48 group">
+       <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+        <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+       </div>
+       <div class="text-center">
+        <h3 class="font-semibold">GitHub</h3>
+        <p class="text-secondary text-sm">@seuusuario</p>
+       </div></a> <a id="linkedin-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="bg-card rounded-2xl p-8 card-hover flex flex-col items-center gap-4 min-w-48 group">
+       <div class="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center group-hover:bg-teal-500/30 transition-colors">
+        <svg class="w-8 h-8 text-teal-400" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+       </div>
+       <div class="text-center">
+        <h3 class="font-semibold">LinkedIn</h3>
+        <p class="text-secondary text-sm">/in/seuusuario</p>
+       </div></a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-secondary text-sm">© 2024 <span id="footer-name">Seu Nome</span>. Todos os direitos reservados.</p>
+      <p class="text-muted text-sm">Feito com 💜 e muito ☕</p>
+     </div>
+    </div>
+   </footer><!-- Timeline Modal -->
+   <div id="timeline-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-overlay absolute inset-0" onclick="closeTimelineModal()"></div>
+    <div class="relative z-10 flex items-center justify-center min-h-full p-4">
+     <div class="bg-surface rounded-2xl max-w-2xl w-full max-h-[90%] overflow-auto p-8 relative"><button onclick="closeTimelineModal()" class="absolute top-4 right-4 text-secondary hover:text-white transition-colors">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+      <div id="modal-content"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      profile_name: 'Seu Nome',
+      profile_title: 'Desenvolvedor Full Stack',
+      about_text: 'Sou um desenvolvedor apaixonado por criar soluções tecnológicas que impactam positivamente a vida das pessoas. Com experiência em desenvolvimento web full stack, busco constantemente aprender novas tecnologias e aprimorar minhas habilidades.',
+      email_address: 'seu@email.com',
+      github_url: 'https://github.com',
+      linkedin_url: 'https://linkedin.com',
+      background_color: '#0F172A',
+      surface_color: '#1E293B',
+      text_color: '#F8FAFC',
+      primary_action_color: '#14B8A6',
+      secondary_action_color: '#A78BFA'
+    };
+    
+    // Timeline data
+    const timelineData = {
+      exp1: {
+        title: 'Desenvolvedor Sênior',
+        company: 'Tech Company XYZ',
+        period: '2023 - Presente',
+        description: 'Liderança técnica em projetos de grande escala, responsável por arquitetura de sistemas e mentoria de desenvolvedores júniors. Implementação de práticas DevOps e CI/CD.',
+        technologies: ['React', 'Node.js', 'AWS', 'Docker', 'Kubernetes'],
+        achievements: [
+          'Reduziu tempo de deploy em 70%',
+          'Liderou equipe de 8 desenvolvedores',
+          'Implementou arquitetura microservices'
+        ],
+        impact: 'Aumento de 40% na produtividade da equipe e redução de 50% em bugs em produção.'
+      },
+      exp2: {
+        title: 'Desenvolvedor Pleno',
+        company: 'Startup ABC',
+        period: '2021 - 2023',
+        description: 'Desenvolvimento de features core do produto, participação ativa em code reviews e processos de onboarding de novos desenvolvedores.',
+        technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Redis'],
+        achievements: [
+          'Desenvolveu módulo de pagamentos',
+          'Mentoria de 3 desenvolvedores júniors',
+          'Otimizou queries reduzindo latência em 60%'
+        ],
+        impact: 'Features desenvolvidas geraram aumento de 25% na conversão de usuários.'
+      },
+      exp3: {
+        title: 'Desenvolvedor Júnior',
+        company: 'Agência Digital',
+        period: '2019 - 2021',
+        description: 'Início da carreira profissional com foco em desenvolvimento frontend, criação de landing pages e sistemas web responsivos.',
+        technologies: ['JavaScript', 'HTML/CSS', 'React', 'WordPress'],
+        achievements: [
+          'Desenvolveu mais de 30 projetos',
+          'Aprendeu metodologias ágeis',
+          'Certificação em React'
+        ],
+        impact: 'Contribuiu para projetos que geraram mais de R$ 2M em vendas para clientes.'
+      },
+      edu1: {
+        title: 'Bacharelado em Ciência da Computação',
+        company: 'Universidade Federal',
+        period: '2015 - 2019',
+        description: 'Forma��ão acadêmica completa com ênfase em desenvolvimento de software, algoritmos e estruturas de dados.',
+        technologies: ['C/C++', 'Java', 'Python', 'SQL'],
+        achievements: [
+          'TCC nota máxima',
+          'Monitor de Algoritmos por 2 anos',
+          'Participação em projetos de extensão'
+        ],
+        impact: 'Base sólida que permitiu rápida evolução na carreira profissional.'
+      }
+    };
+    
+    // Theme toggle
+    let isDarkMode = true;
+    
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      const body = document.body;
+      const moonIcon = document.getElementById('moon-icon');
+      const sunIcon = document.getElementById('sun-icon');
+      
+      if (isDarkMode) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        moonIcon.classList.remove('hidden');
+        sunIcon.classList.add('hidden');
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+      }
+    }
+    
+    // Mobile menu toggle
+    let isMobileMenuOpen = false;
+    
+    function toggleMobileMenu() {
+      isMobileMenuOpen = !isMobileMenuOpen;
+      const menu = document.getElementById('mobile-menu');
+      if (isMobileMenuOpen) {
+        menu.classList.add('open');
+      } else {
+        menu.classList.remove('open');
+      }
+    }
+    
+    // Timeline modal
+    function openTimelineModal(id) {
+      const modal = document.getElementById('timeline-modal');
+      const content = document.getElementById('modal-content');
+      const data = timelineData[id];
+      
+      if (data) {
+        content.innerHTML = `
+          <span class="text-teal-400 text-sm font-medium">${data.period}</span>
+          <h2 class="font-display text-2xl font-bold mt-2">${data.title}</h2>
+          <p class="text-secondary mt-1">${data.company}</p>
+          
+          <div class="mt-6">
+            <h3 class="font-semibold mb-2">Descrição</h3>
+            <p class="text-secondary">${data.description}</p>
+          </div>
+          
+          <div class="mt-6">
+            <h3 class="font-semibold mb-3">Tecnologias</h3>
+            <div class="flex flex-wrap gap-2">
+              ${data.technologies.map(tech => `<span class="badge px-3 py-1 rounded-full text-sm text-teal-400">${tech}</span>`).join('')}
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <h3 class="font-semibold mb-3">Conquistas</h3>
+            <ul class="space-y-2">
+              ${data.achievements.map(item => `
+                <li class="flex items-start gap-2 text-secondary">
+                  <svg class="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  ${item}
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          
+          <div class="mt-6 quote-block pl-4 py-3">
+            <h3 class="font-semibold mb-2">Impacto</h3>
+            <p class="text-secondary italic">"${data.impact}"</p>
+          </div>
+        `;
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeTimelineModal() {
+      const modal = document.getElementById('timeline-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+    
+    // Timeline scroll functionality
+    const timelineContainer = document.getElementById('timeline-container');
+    const timelineScrollLeft = document.getElementById('timeline-scroll-left');
+    const timelineScrollRight = document.getElementById('timeline-scroll-right');
+    
+    function scrollTimeline(direction) {
+      const scrollAmount = 320; // width of a card + gap
+      timelineContainer.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+    
+    timelineScrollLeft.addEventListener('click', () => scrollTimeline('left'));
+    timelineScrollRight.addEventListener('click', () => scrollTimeline('right'));
+    
+    // Event listeners
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeTimelineModal();
+      }
+    });
+    
+    // SDK Integration
+    async function onConfigChange(config) {
+      // Update name displays
+      const name = config.profile_name || defaultConfig.profile_name;
+      document.getElementById('nav-name').textContent = name.split(' ')[0];
+      document.getElementById('hero-name').innerHTML = `<span class="gradient-text">${name}</span>`;
+      document.getElementById('footer-name').textContent = name;
+      
+      // Update title
+      const title = config.profile_title || defaultConfig.profile_title;
+      document.getElementById('hero-title').textContent = title;
+      
+      // Update about text
+      const aboutText = config.about_text || defaultConfig.about_text;
+      document.getElementById('about-text').textContent = aboutText;
+      
+      // Update contact info
+      const email = config.email_address || defaultConfig.email_address;
+      document.getElementById('email-link').href = `mailto:${email}`;
+      document.getElementById('email-text').textContent = email;
+      
+      const github = config.github_url || defaultConfig.github_url;
+      document.getElementById('github-link').href = github;
+      
+      const linkedin = config.linkedin_url || defaultConfig.linkedin_url;
+      document.getElementById('linkedin-link').href = linkedin;
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['profile_name', config.profile_name || defaultConfig.profile_name],
+        ['profile_title', config.profile_title || defaultConfig.profile_title],
+        ['about_text', config.about_text || defaultConfig.about_text],
+        ['email_address', config.email_address || defaultConfig.email_address],
+        ['github_url', config.github_url || defaultConfig.github_url],
+        ['linkedin_url', config.linkedin_url || defaultConfig.linkedin_url]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    } else {
+      onConfigChange(defaultConfig);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c856add275eb7a9',t:'MTc3MDE1ODI5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,187 @@
+:root{
+    --bg:#ffffff;
+    --muted:#666;
+    --accent:#0066cc;
+    --glass: rgba(255,255,255,0.6);
+    --max-width:1100px;
+    --radius:12px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.5}
+    .container{max-width:var(--max-width);margin:0 auto;padding:2rem}
+    .header-inner{display:flex;align-items:center;justify-content:space-between}
+    .site-header{position:sticky;top:0;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));backdrop-filter:blur(6px);border-bottom:1px solid #eee;z-index:50}
+    .logo{font-weight:700;text-decoration:none;color:var(--accent)}
+    .main-nav{display:flex;gap:1rem}
+    .main-nav a{text-decoration:none;color:var(--muted)}
+    .nav-toggle{display:none;background:none;border:0;font-size:1.25rem}
+    
+    /* === Cabeçalho === */
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #2c3e50, #34495e);
+        color: white;
+        padding: 15px 30px;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    
+    .site-nav {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .site-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    
+    .hero{padding:4rem 0}
+    .hero .lead{font-weight:600;margin-top:.5rem;color:var(--muted)}
+    .cta-row{margin-top:1rem;display:flex;gap:0.75rem}
+    .btn{display:inline-block;padding:.6rem .9rem;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
+    .btn.ghost{background:transparent;border:1px solid #ddd;color:var(--accent)}
+    
+    
+    .section{padding:3rem 0}
+    .gray{background:#fafafa}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+    .card{padding:1rem;border-radius:var(--radius);background:var(--glass);border:1px solid #eee}
+    .card h3{margin-top:0}
+    .meta{color:var(--muted);font-size:.9rem}
+    
+    
+    .skills{columns:2;list-style:none;padding:0;margin:0;gap:0.5rem}
+    .skills li{break-inside:avoid;margin-bottom:.5rem}
+
+    /* === Linha do Tempo === */
+.timeline {
+    background: #f9f9f9;
+    padding: 60px 20px;
+    overflow: hidden;
+  }
+  
+  .timeline h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+  }
+  
+  .timeline-wrapper {
+    position: relative;
+    display: flex;
+    gap: 60px;
+    overflow-x: auto;
+    padding: 60px 20px; /* espaço extra p/ linha */
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+    cursor: grab;
+  }
+  
+  .timeline-wrapper:active {
+    cursor: grabbing;
+  }
+  
+  /* Linha central única */
+  .timeline-line {
+    position: absolute;
+    top: 40px; /* posição da linha acima das setas */
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: #2c3e50;
+    z-index: 0;
+  }
+  
+  .timeline-item {
+    position: relative;
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
+    text-align: center;
+    z-index: 1; /* fica acima da linha */
+  }
+  
+  .timeline-item .arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #2c3e50;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  
+  .timeline-item .content {
+    background: white;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .timeline-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #34495e;
+  }
+  
+  .timeline-item p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+    
+    /*contato*/
+    .contacts{list-style:none;padding:0;margin:0}
+    .contacts a{text-decoration:none;color:var(--accent)}
+    
+    
+    .site-footer{padding:1rem 0;border-top:1px solid #eee;text-align:center}
+    
+    
+    /* responsividade */
+    @media (max-width: 768px) {
+        .site-nav {
+          position: absolute;
+          top: 60px;
+          right: 0;
+          background: #2c3e50;
+          flex-direction: column;
+          gap: 15px;
+          padding: 20px;
+          display: none;
+        }
+      
+        .site-nav.active {
+          display: flex;
+        }
+      
+        .nav-toggle {
+          display: block;
+        }
+        main-nav{position:absolute;right:1rem;top:64px;background:#fff;padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08);flex-direction:column;display:none}
+        .main-nav.open{display:flex}
+        .header-inner{gap:1rem}
+        .skills{columns:1}
+      }
