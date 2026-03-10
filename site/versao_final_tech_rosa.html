@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Versão final tech</title>
+  <title>Versão final tech rosa</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <style>
-    /* versao tech usada pra teste de versao final */
+    /* versao tech usada pra teste de cores aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     body {
       box-sizing: border-box;
     }
@@ -34,10 +34,33 @@
       --border-color: rgba(6, 182, 212, 0.2);
       --accent-cyan: #06b6d4;
       --accent-violet: #8b5cf6;
+      --turquoise: #14B8A6;
+      --turquoise-light: #2DD4BF;
+      --turquoise-dark: #0D9488;
+      --lavender: #A78BFA;
+      --lavender-light: #C4B5FD;    
+      --primary: #EC4899;
+      --primary-light: #F472B6;
+      --primary-dark: #DB2777;
+      --secondary: #A855F7;
+      --secondary-light: #C084FC;
+      --secondary-dark: #9333EA;
+      --tertiary: #73A6F6;
+      --tertiary-light: #9CC0FA;
+      --tertiary-dark: #4F8CF2;
+      --accent: #E879F9;
+      --accent-light: #F0ABFC;
+      --accent-dark: #D946EF;
+      --dark-bg: #0F172A;
+      --dark-surface: #1E293B;
+      --dark-card: #334155;
+      --light-bg: #F8FAFC;
+      --light-surface: #FFFFFF;
+      --light-card: #F1F5F9;
     }
 
     html.light-mode {
-      --bg-primary: #f8fafc;
+      --bg-primary: var(--light-bg);
       --bg-secondary: #f1f5f9;
       --text-primary: #1e293b;
       --text-secondary: #475569;
@@ -45,6 +68,11 @@
       --border-color: rgba(6, 182, 212, 0.15);
       --accent-cyan: #0891b2;
       --accent-violet: #7c3aed;
+      --bg-surface: var(--light-surface);
+      --bg-card: var(--light-card);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
     }
 
     body {
@@ -83,6 +111,42 @@
     html.light-mode .glass-card {
       background: rgba(241, 245, 249, 0.6);
       border: 1px solid rgba(6, 182, 212, 0.15);
+    }
+
+    /* botão base */
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+
+    /* VARIAÇÃO GRADIENTE */
+    .btn-gradient-secondary-tertiary {
+      background: linear-gradient(
+        to right,
+        var(--secondary),
+        var(--tertiary)
+      );
+      transition: background 0.2s ease;
+    }
+
+    .btn-gradient-secondary-tertiary:hover {
+      background: linear-gradient(
+        to right,
+        var(--secondary-dark),
+        var(--tertiary-dark)
+      );
     }
 
     .hex-pattern {
@@ -204,7 +268,7 @@
     }
 
     .horizontal-timeline-scroll::-webkit-scrollbar-thumb {
-      background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       border-radius: 3px;
     }
 
@@ -356,6 +420,14 @@
         height: 18px;
       }
     }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #EC4899 0%, #8B73F3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     
     .tech-border {
       position: relative;
@@ -367,7 +439,7 @@
       inset: 0;
       border-radius: inherit;
       padding: 2px;
-      background: linear-gradient(135deg, #06b6d4, #8b5cf6, #06b6d4);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       background-size: 200% 200%;
       animation: gradient-shift 4s linear infinite;
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -433,7 +505,7 @@
     }
     
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       border-radius: 4px;
     }
 
@@ -524,7 +596,7 @@
      <div class="glass-card rounded-lg p-4 mb-6 inline-block slide-up" style="animation-delay: 0.2s">
       <p class="mono text-cyan-400 text-sm"><span class="text-violet-400">const</span> developer = <span class="text-emerald-400">"Hello World!"</span>;</p>
      </div>
-     <h1 id="hero-name" class="text-5xl md:text-7xl font-bold mb-4 slide-up" style="animation-delay: 0.4s"><span class="bg-gradient-to-r from-cyan-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent gradient-animate"> Luiza de Oliveira Costa </span></h1>
+     <h1 id="hero-name" class="text-5xl md:text-7xl font-bold mb-4 slide-up" style="animation-delay: 0.4s"><span class="gradient-text"> Luiza de Oliveira Costa </span></h1>
      <div class="slide-up" style="animation-delay: 0.6s">
       <h2 id="hero-title" class="text-2xl md:text-3xl theme-text-muted mb-4 mono">Full Stack Developer</h2>
      </div>
@@ -546,12 +618,17 @@
        <svg class="w-5 h-5 text-violet-400" viewbox="0 0 24 24" fill="currentColor"><path d="M20 6h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 4h6v2H9V4zm11 16H4V8h16v12z" />
        </svg><span class="text-sm">AWS</span>
       </div>
-     </div><!-- CTA Buttons -->
-     <div class="flex items-center justify-center gap-4 slide-up flex-wrap" style="animation-delay: 1.2s"><a href="#projects" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 text-white"> <span>Ver Projetos</span>
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 7l5 5-5 5M6 12h12" />
-       </svg></a> <a href="#contact" class="px-8 py-3 glass-card rounded-lg font-semibold hover:bg-slate-800/50 dark:hover:bg-slate-800/50 transition-colors"> Fale Comigo </a>
      </div>
-    </div><!-- Scroll Indicator -->
+     <!-- CTA Buttons -->     
+     <div class="flex items-center justify-center gap-4 slide-up flex-wrap" style="animation-delay: 1.2s">
+      <a href="#projects" class="btn btn-gradient-secondary-tertiary"> <span>Ver Projetos</span>
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 7l5 5-5 5M6 12h12" />
+       </svg>
+       </a> <a href="#contact" class="px-8 py-3 glass-card rounded-lg font-semibold hover:bg-slate-800/50 dark:hover:bg-slate-800/50 transition-colors"> Fale Comigo </a>
+     </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce"><span class="text-xs theme-text-muted mono">scroll</span>
      <svg class="w-5 h-5 theme-text-muted" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 14l-7 7-7-7" />
      </svg>
@@ -564,7 +641,7 @@
       <div class="w-12 h-12 rounded-lg theme-bg flex items-center justify-center"><span class="mono text-cyan-400">&lt;/&gt;</span>
       </div>
       <h2 class="text-3xl font-bold">Sobre Mim</h2>
-      <div class="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
      </div>
      <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="glass-card rounded-2xl p-8 tech-border">
@@ -696,10 +773,12 @@
        </svg>
       </div>
       <h2 class="text-3xl font-bold">Minha Carreira</h2>
-      <div class="flex-1 h-px bg-gradient-to-r from-violet-500/50 to-transparent"></div>
-     </div><!-- Horizontal Timeline with Scroll -->
+      <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
+     </div>
+     <!-- Horizontal Timeline with Scroll -->
      <div class="horizontal-timeline-wrapper relative">
-      <div class="horizontal-timeline-scroll" id="timelineScroll"><!-- Timeline Item 1 (Most Recent) -->
+      <div class="horizontal-timeline-scroll" id="timelineScroll">
+        <!-- Timeline Item 1 (Most Recent) -->
        <div class="horizontal-timeline-item" data-timeline-id="1">
         <div class="h-timeline-card cursor-pointer group">
          <div class="h-timeline-date mono">
@@ -1000,7 +1079,7 @@
        </svg>
       </div>
       <h2 class="text-3xl font-bold">Habilidades</h2>
-      <div class="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
      </div>
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Skill Card 1 -->
       <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 group">
@@ -1119,7 +1198,7 @@
        </svg>
       </div>
       <h2 class="text-3xl font-bold">Projetos</h2>
-      <div class="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
      </div>
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Project 1 -->
       <div class="project-card glass-card rounded-xl overflow-hidden group cursor-pointer">
@@ -1209,7 +1288,7 @@
        </svg>
       </div>
       <h2 class="text-3xl font-bold">Contato</h2>
-      <div class="flex-1 h-px bg-gradient-to-r from-violet-500/50 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
      </div>
      <div class="glass-card rounded-2xl p-8 tech-border">
       <div class="text-center mb-8">
@@ -1238,10 +1317,12 @@
         </div>
        </div>
        <div><label for="message" class="block text-sm theme-text-muted mb-2">Mensagem</label> <textarea id="message" rows="4" class="w-full px-4 py-3 theme-bg border theme-border rounded-lg focus:border-cyan-500 focus:outline-none transition-colors resize-none" placeholder="Sua mensagem..." required></textarea>
-       </div><button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-white"> <span>Enviar Mensagem</span>
+       </div>
+       <button type="submit" class="w-full py-3 btn btn-gradient-secondary-tertiary flex items-center justify-center gap-2 text-white"> <span>Enviar Mensagem</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
         </svg></button>
-      </form><!-- Success Message -->
+      </form>
+      <!-- Success Message -->
       <div id="success-message" class="hidden mt-4 p-4 bg-emerald-500/20 border border-emerald-500/30 rounded-lg text-center">
        <p class="text-emerald-400">✓ Mensagem enviada com sucesso! Entrarei em contato em breve.</p>
       </div>
@@ -1252,9 +1333,9 @@
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
      <div class="flex items-center gap-2">
       <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center"><span class="mono font-bold text-sm">&lt;/&gt;</span>
-      </div><span class="mono theme-text-muted text-sm">Desenvolvido com 💜 por Luiza</span>
+      </div><span class="mono theme-text-muted text-sm">Desenvolvido por Luiza</span>
      </div>
-     <p class="theme-text-muted text-sm">© 2024 Todos os direitos reservados</p>
+     <p class="theme-text-muted text-sm">© 2026 Todos os direitos reservados</p>
     </div>
    </footer>
   </div>

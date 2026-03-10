@@ -1,1 +1,3 @@
 gostei da estética do teste_tech_timeline_horizontal.html entao vou adaptar as funcionalidades de versão_final.html a essa estética
+
+luiza de oliveira costa do versao final está escrita com gradient-text: primary (#EC4899) e secundary (#A855F7)
