@@ -75,6 +75,14 @@
       --text-muted: #64748B;
     }
 
+    .bg-tertiary-soft {
+      background: rgba(115,166,246,0.2);
+    }
+
+    .text-tertiary {
+      color: var(--tertiary);
+    }
+
     body {
       background-color: var(--bg-primary);
       color: var(--text-primary);
@@ -104,13 +112,13 @@
     .glass-card {
       backdrop-filter: blur(12px);
       background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(6, 182, 212, 0.2);
+      border: 1px solid color-mix(in srgb, var(--tertiary) 20%, transparent);
       transition: all 0.3s ease;
     }
 
     html.light-mode .glass-card {
       background: rgba(241, 245, 249, 0.6);
-      border: 1px solid rgba(6, 182, 212, 0.15);
+      border: 1px solid color-mix(in srgb, var(--tertiary) 15%, transparent);
     }
 
     /* botão base */
@@ -320,7 +328,7 @@
     }
 
     html.light-mode .h-timeline-date {
-      color: #0891b2;
+      color: var(--tertiary);
     }
 
     .h-timeline-title {
@@ -467,6 +475,44 @@
     
     @keyframes shimmer {
       100% { left: 100%; }
+    }
+
+    /* Badge styles */
+    .badge-gradient {
+      background: linear-gradient(
+        135deg,
+        rgba(236, 72, 153, 0.18) 0%,
+        rgba(168, 85, 247, 0.18) 50%,
+        rgba(115, 166, 246, 0.18) 100%
+      );
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+
+    .badge-primary {
+      background: linear-gradient(
+        135deg,
+        rgba(236, 72, 153, 0.2) 0%,
+        rgba(244, 114, 182, 0.2) 100%
+      );
+      border: 1px solid rgba(236, 72, 153, 0.3);
+    }
+
+    .badge-secondary {
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.2) 0%,
+        rgba(192, 132, 252, 0.2) 100%
+      );
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-tertiary {
+      background: linear-gradient(
+        135deg,
+        rgba(115, 166, 246, 0.22) 0%,
+        rgba(115, 166, 246, 0.12) 100%
+      );
+      border: 1px solid rgba(115, 166, 246, 0.35);
     }
     
     .project-card:hover .project-overlay {
@@ -645,35 +691,37 @@
      </div>
      <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="glass-card rounded-2xl p-8 tech-border">
-       <p id="about-text" class="theme-text leading-relaxed mb-6">Desenvolvedora apaixonada por criar soluções tecnológicas que fazem a diferença. Com mais de 5 anos de experiência em desenvolvimento web, especializo-me em arquiteturas escaláveis e interfaces intuitivas.</p>
-       <p class="theme-text leading-relaxed mb-6">Acredito que código limpo é poesia e que a melhor tecnologia é aquela que simplifica a vida das pessoas. Sempre em busca de novos desafios e aprendizados.</p><!-- Stats -->
+       <p id="about-text" class="theme-text leading-relaxed mb-6">Estudante de Ciência da Computação interessada em transformar problemas reais em soluções tecnológicas. Tenho experiência em análise de requisitos, desenvolvimento web, pesquisa e inovação, além de interesse em ciência de dados.</p>
+       <p class="theme-text leading-relaxed mb-6">Participei de projetos como SobreVidas e ADAs e atualmente trabalho no AKCIT. Gosto de atuar na ponte entre tecnologia e pessoas, organizando necessidades e transformando requisitos em soluções digitais.</p>
+       <!-- Stats -->
        <div class="grid grid-cols-3 gap-4 mt-8">
         <div class="text-center">
-         <div class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-          5+
+         <div class="text-3xl font-bold" style="color: var(--tertiary);">
+          3+
          </div>
          <div class="text-sm theme-text-muted">
           Anos Exp.
          </div>
         </div>
         <div class="text-center">
-         <div class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-          50+
+         <div class="text-3xl font-bold" style="color: var(--tertiary);">
+          3+
          </div>
          <div class="text-sm theme-text-muted">
-          Projetos
+          Projetos Acadêmicos e tecnológicos
          </div>
         </div>
         <div class="text-center">
-         <div class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-          30+
+         <div class="text-3xl font-bold" style="color: var(--tertiary);">
+          4+
          </div>
          <div class="text-sm theme-text-muted">
-          Clientes
+          Áreas de atuação
          </div>
         </div>
        </div>
-      </div><!-- Terminal Window -->
+      </div>
+      <!-- Terminal Window -->
       <div class="glass-card rounded-2xl overflow-hidden">
        <div class="theme-bg px-4 py-3 flex items-center gap-2">
         <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -684,81 +732,13 @@
         <p class="theme-text-muted mb-2">$ cat skills.json</p>
         <div class="text-cyan-400">
          <p>{</p>
-         <p class="ml-4"><span class="text-violet-400">"frontend"</span>: [<span class="text-emerald-400">"React"</span>, <span class="text-emerald-400">"Vue"</span>, <span class="text-emerald-400">"Next.js"</span>],</p>
-         <p class="ml-4"><span class="text-violet-400">"backend"</span>: [<span class="text-emerald-400">"Node.js"</span>, <span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"Go"</span>],</p>
-         <p class="ml-4"><span class="text-violet-400">"database"</span>: [<span class="text-emerald-400">"PostgreSQL"</span>, <span class="text-emerald-400">"MongoDB"</span>],</p>
-         <p class="ml-4"><span class="text-violet-400">"cloud"</span>: [<span class="text-emerald-400">"AWS"</span>, <span class="text-emerald-400">"GCP"</span>, <span class="text-emerald-400">"Docker"</span>]</p>
+         <p class="ml-4"><span class="text-violet-400">"areas"</span>: [<span class="text-emerald-400">"analise_de_requisitos"</span>, <span class="text-emerald-400">"desenvolvimento_web"</span>, <span class="text-emerald-400">"analise_de_dados"</span>, <span class="text-emerald-400">"pesquisa_academica"</span>],</p>
+         <p class="ml-4"><span class="text-violet-400">"web"</span>: [<span class="text-emerald-400">"HTML"</span>, <span class="text-emerald-400">"CSS"</span>, <span class="text-emerald-400">"JavaScript"</span>],</p>
+         <p class="ml-4"><span class="text-violet-400">"data"</span>: [<span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"jupiter_notebook"</span>],</p>
+         <p class="ml-4"><span class="text-violet-400">"tools"</span>: [<span class="text-emerald-400">"git"</span>, <span class="text-emerald-400">"latex"</span>, <span class="text-emerald-400">"google_colab"</span>]</p>
          <p>}</p>
         </div>
         <p class="theme-text-muted mt-4 flex items-center">$ <span class="ml-2 w-2 h-4 bg-cyan-400 animate-pulse"></span></p>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <!-- Sobre Section que gostei -->
-   <section id="sobre" class="py-20 relative">
-    <div class="section-divider mb-20"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-16">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Sobre Mim</span></h2>
-      <p class="text-secondary max-w-2xl mx-auto">Conheça um pouco mais sobre minha trajetória e paixões</p>
-     </div>
-     <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Photo -->
-      <div class="flex justify-center">
-       <div class="photo-frame rounded-2xl floating">
-        <div class="photo-inner rounded-xl">
-         <div class="w-64 h-80 sm:w-80 sm:h-96 bg-card rounded-lg flex items-center justify-center">
-          <svg class="w-24 h-24 text-teal-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-         </div>
-        </div>
-       </div>
-      </div><!-- About content -->
-      <div class="space-y-6">
-       <p id="about-text" class="text-secondary text-lg leading-relaxed">Sou um desenvolvedor apaixonado por criar soluções tecnológicas que impactam positivamente a vida das pessoas. Com experiência em desenvolvimento web full stack, busco constantemente aprender novas tecnologias e aprimorar minhas habilidades.</p>
-       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-card rounded-xl p-4 card-hover">
-         <div class="flex items-center gap-3 mb-2">
-          <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
-           <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-           </svg>
-          </div>
-          <h3 class="font-semibold">Desenvolvimento</h3>
-         </div>
-         <p class="text-secondary text-sm">Full Stack Web &amp; Mobile</p>
-        </div>
-        <div class="bg-card rounded-xl p-4 card-hover">
-         <div class="flex items-center gap-3 mb-2">
-          <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-           <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-           </svg>
-          </div>
-          <h3 class="font-semibold">Inovação</h3>
-         </div>
-         <p class="text-secondary text-sm">Soluções criativas</p>
-        </div>
-        <div class="bg-card rounded-xl p-4 card-hover">
-         <div class="flex items-center gap-3 mb-2">
-          <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
-           <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-           </svg>
-          </div>
-          <h3 class="font-semibold">Colaboração</h3>
-         </div>
-         <p class="text-secondary text-sm">Trabalho em equipe</p>
-        </div>
-        <div class="bg-card rounded-xl p-4 card-hover">
-         <div class="flex items-center gap-3 mb-2">
-          <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-           <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-           </svg>
-          </div>
-          <h3 class="font-semibold">Performance</h3>
-         </div>
-         <p class="text-secondary text-sm">Otimização &amp; Qualidade</p>
-        </div>
        </div>
       </div>
      </div>
@@ -790,7 +770,8 @@
          </div>
          <div class="h-timeline-node group-hover:scale-125 transition-transform"></div>
         </div>
-       </div><!-- Timeline Item 2 -->
+       </div>
+       <!-- Timeline Item 2 -->
        <div class="horizontal-timeline-item" data-timeline-id="2">
         <div class="h-timeline-card cursor-pointer group">
          <div class="h-timeline-date mono">
@@ -802,7 +783,8 @@
          </div>
          <div class="h-timeline-node group-hover:scale-125 transition-transform"></div>
         </div>
-       </div><!-- Timeline Item 3 -->
+       </div>
+       <!-- Timeline Item 3 -->
        <div class="horizontal-timeline-item" data-timeline-id="3">
         <div class="h-timeline-card cursor-pointer group">
          <div class="h-timeline-date mono">
@@ -1070,7 +1052,8 @@
       </div>
      </div>
     </div>
-   </section><!-- Skills Section -->
+   </section>
+   <!-- Skills Section -->
    <section id="skills" class="py-20 px-6 relative">
     <div class="max-w-6xl mx-auto">
      <div class="flex items-center gap-4 mb-12">
@@ -1081,42 +1064,65 @@
       <h2 class="text-3xl font-bold">Habilidades</h2>
       <div class="flex-1 h-px bg-gradient-to-r from-[#EC4899]/50 to-transparent"></div>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Skill Card 1 -->
-      <div class="glass-card rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 group">
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Skill Card 1 -->
+      <div class="glass-card rounded-xl p-6 hover:border-[var(--tertiary)] transition-all duration-300 group">
        <div class="flex items-center gap-4 mb-4">
-        <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-         <svg class="w-6 h-6 text-cyan-400" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l6.6 3.3L12 10.79 5.4 7.48 12 4.18zM4 8.88l7 3.5v6.74l-7-3.5V8.88zm16 6.74l-7 3.5v-6.74l7-3.5v6.74z" />
+        <div class="w-12 h-12 rounded-lg bg-tertiary-soft flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6 text-[var(--tertiary)]" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l6.6 3.3L12 10.79 5.4 7.48 12 4.18zM4 8.88l7 3.5v6.74l-7-3.5V8.88zm16 6.74l-7 3.5v-6.74l7-3.5v6.74z" />
          </svg>
         </div>
         <div>
-         <h3 class="font-semibold text-lg">Frontend</h3>
-         <p class="text-sm theme-text-muted">React, Vue, Next.js</p>
+         <h3 class="font-semibold text-lg">Competências Técnicas</h3>
+         <p class="text-sm theme-text-muted">HTML, CSS, Python</p>
         </div>
        </div>
        <div class="space-y-3">
         <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">React/Next.js</span> <span class="text-cyan-400">95%</span>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">HTML / CSS</span> <span class="text-cyan-400">80%</span>
          </div>
          <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 95%"></div>
+          <div class="h-full bg-gradient-to-r from-[#DB2777] to-[#F472B6] rounded-full" style="width: 80%"></div>
          </div>
         </div>
         <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">TypeScript</span> <span class="text-cyan-400">90%</span>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">JavaScript</span> <span class="text-cyan-400">90%</span>
          </div>
          <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 90%"></div>
+          <div class="h-full bg-gradient-to-r from-[#9333EA] to-[#C084FC] rounded-full" style="width: 80%"></div>
          </div>
         </div>
         <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Tailwind CSS</span> <span class="text-cyan-400">92%</span>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Python</span> <span class="text-cyan-400">60%</span>
          </div>
          <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 92%"></div>
+          <div class="h-full bg-gradient-to-r from-[#4F8CF2] to-[#9CC0FA] rounded-full" style="width: 80%"></div>
+         </div>
+        </div>        
+        <div>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Análise de Requisitos</span> <span class="text-cyan-400">85%</span>
+         </div>
+         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
+          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Testes Manuais (QA)</span> <span class="text-cyan-400">75%</span>
+         </div>
+         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
+          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 75%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Produção de Conteúdo Web / Web Publishing</span> <span class="text-cyan-400">85%</span>
+         </div>
+         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
+          <div class="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style="width: 85%"></div>
          </div>
         </div>
        </div>
-      </div><!-- Skill Card 2 -->
+      </div>
+      <!-- Skill Card 2 -->
       <div class="glass-card rounded-xl p-6 hover:border-violet-500/50 transition-all duration-300 group">
        <div class="flex items-center gap-4 mb-4">
         <div class="w-12 h-12 rounded-lg bg-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -1124,72 +1130,37 @@
          </svg>
         </div>
         <div>
-         <h3 class="font-semibold text-lg">Backend</h3>
+         <h3 class="font-semibold text-lg">Ferramentas e Métodos</h3>
          <p class="text-sm theme-text-muted">Node.js, Python, Go</p>
         </div>
        </div>
-       <div class="space-y-3">
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Node.js</span> <span class="text-violet-400">93%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style="width: 93%"></div>
-         </div>
-        </div>
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Python</span> <span class="text-violet-400">88%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style="width: 88%"></div>
-         </div>
-        </div>
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">GraphQL</span> <span class="text-violet-400">85%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style="width: 85%"></div>
-         </div>
-        </div>
-       </div>
-      </div><!-- Skill Card 3 -->
-      <div class="glass-card rounded-xl p-6 hover:border-emerald-500/50 transition-all duration-300 group">
-       <div class="flex items-center gap-4 mb-4">
-        <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-         <svg class="w-6 h-6 text-emerald-400" viewbox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2v-4h4v-2h-4V7h-2v4H8v2h4z" />
-         </svg>
-        </div>
-        <div>
-         <h3 class="font-semibold text-lg">Cloud &amp; DevOps</h3>
-         <p class="text-sm theme-text-muted">AWS, Docker, K8s</p>
-        </div>
-       </div>
-       <div class="space-y-3">
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">AWS</span> <span class="text-emerald-400">90%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style="width: 90%"></div>
-         </div>
-        </div>
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">Docker</span> <span class="text-emerald-400">92%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style="width: 92%"></div>
-         </div>
-        </div>
-        <div>
-         <div class="flex justify-between text-sm mb-1"><span class="theme-text">CI/CD</span> <span class="text-emerald-400">87%</span>
-         </div>
-         <div class="h-2 theme-bg rounded-full overflow-hidden skill-bar">
-          <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style="width: 87%"></div>
-         </div>
+       <div class="space-y-3">        
+        <div class="flex flex-wrap gap-2"><span class="badge-gradient px-3 py-2 rounded-lg text-sm">Git</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">VS Code</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Jupyter Notebook</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Google Colab</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Canva</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Filmora</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Documentação</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Scrum</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Kanban</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Métodos Ágeis</span> <span class="badge-gradient px-3 py-2 rounded-lg text-sm">Pesquisa e Desenvolvimento</span>
         </div>
        </div>
       </div>
+      <!-- Skill Card 2 -->
+      <div class="glass-card rounded-xl p-6 hover:border-violet-500/50 transition-all duration-300 group">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-lg bg-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-6 h-6 text-violet-400" viewbox="0 0 24 24" fill="currentColor"><path d="M20 6h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 4h6v2H9V4zm11 16H4V8h16v12z" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-semibold text-lg">Soft Skills</h3>
+         <p class="text-sm theme-text-muted">Liderança, organização, criatividade</p>
+        </div>
+       </div>
+       <div class="space-y-3">        
+        <div class="flex flex-wrap gap-2"><span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Git</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">VS Code</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Jupyter Notebook</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Google Colab</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Canva</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Filmora</span> <span class="badge-tertiary px-3 py-2 rounded-lg text-sm">Documentação</span>
+        </div>
+       </div>
+      </div>      
      </div>
     </div>
-   </section><!-- Projects Section -->
+   </section>
+   
+   <!-- Projects Section -->
    <section id="projects" class="py-20 px-6 relative">
     <div class="max-w-6xl mx-auto">
      <div class="flex items-center gap-4 mb-12">
@@ -1279,7 +1250,8 @@
        </svg></button>
      </div>
     </div>
-   </section><!-- Contact Section -->
+   </section>
+   <!-- Contact Section -->
    <section id="contact" class="py-20 px-6 relative">
     <div class="max-w-4xl mx-auto">
      <div class="flex items-center gap-4 mb-12">
