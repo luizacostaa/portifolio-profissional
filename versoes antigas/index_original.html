@@ -130,32 +130,6 @@
     .text-muted {
       color: var(--text-muted);
     }
-
-    /* Ajustes para telas menores */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px; /* Reduz o tamanho da fonte */
-  }
-
-  .container {
-    padding: 10px; /* Ajusta o espaçamento */
-  }
-
-  .text-muted {
-    font-size: 12px; /* Ajusta o tamanho do texto */
-  }
-}
-
-/* Ajustes para telas muito pequenas */
-@media (max-width: 480px) {
-  .header {
-    flex-direction: column; /* Empilha os elementos */
-  }
-
-  .content {
-    padding: 5px; /* Reduz o espaçamento */
-  }
-}
     
     /* Animations */
     @keyframes fadeInUp {
@@ -351,22 +325,16 @@
   <div id="app" class="min-h-full w-full overflow-auto"><!-- Header -->
    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-surface backdrop-blur-lg bg-opacity-90 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16">
-      <!-- Logo --> <a href="#hero" class="font-display font-bold text-xl gradient-text"> <span id="nav-name">Portfolio</span> </a> <!-- Desktop Navigation -->
+     <div class="flex items-center justify-between h-16"><!-- Logo --> <a href="#hero" class="font-display font-bold text-xl gradient-text"> <span id="nav-name">Portfolio</span> </a> <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8"><a href="#sobre" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Sobre</a> <a href="#projetos" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Projetos</a> <a href="#habilidades" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Habilidades</a> <a href="#timeline" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Linha do Tempo</a> <a href="#certificados" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Certificados</a> <a href="#contato" class="nav-link text-secondary hover:text-cyan-400 transition-colors text-sm font-medium">Contato</a>
-      </nav>
-      <!-- Theme Toggle & Mobile Menu Button -->
-      <div class="flex items-center gap-4">
-        <button id="theme-toggle" class="p-2 rounded-lg bg-card hover:bg-cyan-500/20 transition-colors" aria-label="Alternar tema">
+      </nav><!-- Theme Toggle & Mobile Menu Button -->
+      <div class="flex items-center gap-4"><button id="theme-toggle" class="p-2 rounded-lg bg-card hover:bg-cyan-500/20 transition-colors" aria-label="Alternar tema">
         <svg id="moon-icon" class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
         <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        </button> 
-        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-card hover:bg-cyan-500/20 transition-colors" aria-label="Menu">
+        </svg></button> <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-card hover:bg-cyan-500/20 transition-colors" aria-label="Menu">
         <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        </button>
+        </svg></button>
       </div>
      </div>
     </div><!-- Mobile Navigation -->
