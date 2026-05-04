@@ -343,6 +343,26 @@
       background: var(--bg-surface);
       padding: 4px;
     }
+
+    /*Carrosel de noticias */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden; /* Esconde as notícias fora da área visível */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out; /* Animação suave ao deslizar */
+    }
+
+    .noticia {
+      flex: 0 0 33.333%; /* Cada notícia ocupa 1/3 da largura */
+    }
+
+    button {
+      cursor: pointer;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -407,6 +427,7 @@
     </a>
    </div>
   </section>
+  
    <!-- Sobre Section -->
    <section id="sobre" class="py-20 relative">
     <div class="section-divider mb-20"></div>
@@ -438,7 +459,7 @@
           </div>
           <h3 class="font-semibold">Desenvolvimento</h3>
          </div>
-         <p class="text-secondary text-sm">Full Stack Web &amp; Mobile</p>
+         <p class="text-secondary text-sm">Full Stack</p>
         </div>
         <div class="bg-card rounded-xl p-4 card-hover">
          <div class="flex items-center gap-3 mb-2">
@@ -475,6 +496,7 @@
      </div>
     </div>
    </section>
+
    <!-- Projetos Section -->
    <section id="projetos" class="py-20 bg-surface">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -482,13 +504,16 @@
       <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Projetos</span></h2>
       <p class="text-secondary max-w-2xl mx-auto">Alguns dos projetos que desenvolvi e que demonstram minhas habilidades</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project Card 1 -->
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Projeto sobrevidas -->
       <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-       <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
-        <svg class="w-16 h-16 text-cyan-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
+        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
+        <img src="../assets/Logo_SobreVidas.png" 
+        alt="Logo SobreVidas"
+        class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
         <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
-       </div>
+      </div>
        <div class="p-6">
         <h3 class="font-display font-bold text-xl mb-2">SobreVidas (HealthTech)</h3>
         <p class="text-secondary text-sm mb-4">Solução tecnológica para rastreamento e monitoramento de populações de alto risco de câncer bucal.</p>
@@ -506,13 +531,16 @@
           </svg> Demo </a>
         </div>
        </div>
-      </article><!-- Project Card 2 -->
+      </article>
+      <!-- Workshop ADAs -->
       <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-       <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-cyan-500/20 flex items-center justify-center relative overflow-hidden">
-        <svg class="w-16 h-16 text-purple-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-        <div class="absolute inset-0 bg-purple-500/0 group-hover:bg-purple-500/10 transition-colors"></div>
-       </div>
+        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
+          <img src="../assets/Logo_Adas.png" 
+          alt="Logo SobreVidas"
+          class="w-4/4 h-4/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
+          <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+      </div>
        <div class="p-6">
         <h3 class="font-display font-bold text-xl mb-2">Workshops ADAs</h3>
         <p class="text-secondary text-sm mb-4">Iniciativa estratégica para avanço da liderança e representatividade feminina na tecnologia (UFG).</p>
@@ -530,13 +558,16 @@
           </svg> Demo </a>
         </div>
        </div>
-      </article><!-- Project Card 3 -->
+      </article>
+      <!-- AKCIT -->
       <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-       <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
-        <svg class="w-16 h-16 text-cyan-400/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
+        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
+        <img src="../assets/Logo_AKCIT.png" 
+        alt="Logo SobreVidas"
+        class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
         <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
-       </div>
+      </div>
        <div class="p-6">
         <h3 class="font-display font-bold text-xl mb-2">Plataforma Educacional AKCIT</h3>
         <p class="text-secondary text-sm mb-4">Design e desenvolvimento de materiais educacionais com foco em inovação visual e usabilidade.</p>
@@ -1408,11 +1439,12 @@
    <footer class="py-8 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-secondary text-sm">© 2024 <span id="footer-name">Luiza de Oliveira Costa</span>. Todos os direitos reservados.</p>
-      <p class="text-muted text-sm">Feito com 💜 e muito ☕</p>
+      <p class="text-secondary text-sm">© 2026 <span id="footer-name">Luiza de Oliveira Costa</span>. Todos os direitos reservados.</p>
+      
      </div>
     </div>
-   </footer><!-- Timeline Modal -->
+   </footer>
+   <!-- Timeline Modal -->
    <div id="timeline-modal" class="fixed inset-0 z-50 hidden">
     <div class="modal-overlay absolute inset-0" onclick="closeTimelineModal()"></div>
     <div class="relative z-10 flex items-center justify-center min-h-full p-4">
@@ -1429,7 +1461,7 @@
     const defaultConfig = {
       profile_name: 'Luiza de Oliveira Costa',
       profile_title: 'Product Management | AI & Data | HealthTech Student',
-      about_text: 'Estudante de Ciência da Computação com experiência em desenvolvimento de software, produção de produtos digitais e coordenação de pesquisas. Apaixonada por unir criatividade e tecnologia em projetos como o SobreVidas (HealthTech) e a liderança do Workshops ADAs (focado em mulheres na tecnologia). Buscando sempre expandir conhecimentos em Product Management, Ciência de Dados e inovação digital.',
+      about_text: 'Olá! 👋🏽 Me chamo Luiza e sou estudante de Ciência da Computação com experiência em desenvolvimento de software e produtos digitais. Atuo em projetos como o SobreVidas (HealthTech) e iniciativas de liderança como o Workshop ADAs, com foco em dados, produto e inovação.',
       email_address: 'oliveiraluiza2012ufg@gmail.com',
       github_url: 'https://github.com/luizacostaa',
       linkedin_url: 'https://www.linkedin.com/in/luiza-costaa',
@@ -1716,5 +1748,7 @@
       onConfigChange(defaultConfig);
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c856260207cb7a9',t:'MTc3MDE1Nzk0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c856260207cb7a9',t:'MTc3MDE1Nzk0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ <script src="main.js"></script>
+ </body>
 </html>
