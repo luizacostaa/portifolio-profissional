@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Versão final conteúdo</title>
+  <title>Portfólio-Luiza de Oliveira Costa</title>
   <link rel="icon" type="image/png" href="../assets/logo_com_circulo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -363,12 +363,146 @@
     button {
       cursor: pointer;
     }
+
+    
+    /* Construction popup styles */
+    .construction-overlay {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .construction-banner {
+      animation: slideUpAndFadeIn 0.5s ease-out;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 
+                  0 0 100px rgba(236, 72, 153, 0.1),
+                  0 0 80px rgba(167, 139, 250, 0.1);
+    }
+    
+    @keyframes slideUpAndFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .construction-icon {
+      animation: floatingIcon 3s ease-in-out infinite;
+    }
+    
+    @keyframes floatingIcon {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .construction-text {
+      animation: textFadeIn 0.8s ease-out 0.3s both;
+    }
+    
+    @keyframes textFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full font-body dark">
-  <div id="app" class="min-h-full w-full overflow-auto"><!-- Header -->
+  <!-- Construction Banner Pop-up -->
+  <div id="construction-popup" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+   <div class="construction-overlay absolute inset-0" onclick="closeConstructionPopup()"></div>
+   <div class="construction-banner relative z-10 bg-surface rounded-3xl max-w-md w-full overflow-hidden">
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-teal-500/10"></div><!-- Floating elements decoration -->
+    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl"></div><!-- Content -->
+    <div class="relative z-20 p-8 md:p-10">
+     <!-- Close button --> <button onclick="closeConstructionPopup()" class="absolute top-4 right-4 text-secondary hover:text-white transition-colors opacity-70 hover:opacity-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></button> <!-- Animated icon -->
+     <div class="flex justify-center mb-6">
+      <div class="construction-icon relative">
+       <svg class="w-20 h-20 text-transparent animate-spin" style="animation-duration: 3s;" fill="none" stroke="url(#gradient)" viewbox="0 0 24 24" stroke-width="1.5">
+        <defs>
+         <lineargradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#A78BFA;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#14B8A6;stop-opacity:1" />
+         </lineargradient>
+        </defs> 
+       </svg>
+       <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-5xl animate-bounce" style="animation-delay: 0s;">🧩</span>
+       </div>
+      </div>
+     </div><!-- Title -->
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-center mb-3 gradient-text">Site em Construção</h2>
+     <!-- Subtitle with animation -->
+     <p class="text-secondary text-center text-sm md:text-base leading-relaxed mb-6 construction-text">Estou atualizando esse portifólio com novos projetos, conquistas e histórias.</p>
+     <!-- Progress indicators -->
+     <div class="space-y-3 mb-8">
+      <div class="flex items-center gap-3">
+       <div class="flex-shrink-0 w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center">
+        <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+       </div><span class="text-sm text-secondary">Projetos</span>
+      </div>
+      <div class="flex items-center gap-3">
+       <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+       </div><span class="text-sm text-secondary">Exposição de habilidades</span>
+      </div>
+      <div class="flex items-center gap-3">
+       <div class="flex-shrink-0 w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center">
+        <div class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></div>
+       </div><span class="text-sm text-secondary">Muito mais em breve...</span>
+      </div>
+     </div><!-- CTA Button --> <button onclick="closeConstructionPopup()" class="w-full px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-pink-500/25 transform hover:scale-105 active:scale-95"> Venha ver! 😁 </button>
+      <!-- Footer note -->
+     <p class="text-xs text-muted text-center mt-4">Tenho novidades!</p>
+    </div>
+   </div>
+  </div>
+  <div id="app" class="min-h-full w-full overflow-auto">
+    <!-- Header -->
    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-surface backdrop-blur-lg bg-opacity-90 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="flex items-center justify-between h-16">
@@ -443,9 +577,9 @@
         <div class="photo-inner rounded-xl">
          <div class="w-64 h-80 sm:w-80 sm:h-96 bg-card rounded-lg flex items-center justify-center overflow-hidden">
           <img src="./assets/formatura-em.jpeg" alt="Foto de Luiza" class="w-full h-full object-cover">
-         </div>
-        </div>
-       </div>
+         </div>         
+        </div>        
+       </div>       
       </div>
       <!-- About content -->
       <div class="space-y-6">
@@ -498,94 +632,94 @@
    </section>
 
    <!-- Projetos Section -->
-   <section id="projetos" class="py-20 bg-surface">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-16">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Projetos</span></h2>
-      <p class="text-secondary max-w-2xl mx-auto">Alguns dos projetos que desenvolvi e que demonstram minhas habilidades</p>
+  <section id="projetos" class="py-20 bg-surface">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="gradient-text">Projetos</span></h2>
+    <p class="text-secondary max-w-2xl mx-auto">Alguns dos projetos que desenvolvi e que demonstram minhas habilidades</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Projeto sobrevidas -->
+    <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+      <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-white"></div> 
+      <img src="../assets/Logo_SobreVidas.png" 
+      alt="Logo SobreVidas"
+      class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
+      <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+    </div>
+     <div class="p-6">
+      <h3 class="font-display font-bold text-xl mb-2">SobreVidas (HealthTech)</h3>
+      <p class="text-secondary text-sm mb-4">Solução tecnológica para rastreamento e monitoramento de populações de alto risco de câncer bucal.</p>
+      <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Product Discovery</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Scrum</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">UX Research</span>
+      </div>
+      <div class="quote-block pl-4 py-2 mb-4">
+      <p class="text-sm text-secondary italic">Premiado no SBCAS 2025, impacto real na saúde pública.</p>
+      </div>
+      <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
+       <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"></svg>
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+       </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+       </svg> Demo </a>
+      </div>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Projeto sobrevidas -->
-      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
-        <img src="../assets/Logo_SobreVidas.png" 
-        alt="Logo SobreVidas"
-        class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
-        <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+    </article>
+    <!-- Workshop ADAs -->
+    <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+      <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+       <div class="absolute inset-0 bg-white"></div> 
+       <img src="../assets/Logo_Adas.png" 
+       alt="Logo SobreVidas"
+       class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 relative">
+       <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+    </div>
+     <div class="p-6">
+      <h3 class="font-display font-bold text-xl mb-2">Workshops ADAs</h3>
+      <p class="text-secondary text-sm mb-4">Iniciativa estratégica para avanço da liderança e representatividade feminina na tecnologia (UFG).</p>
+      <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Liderança</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Gestão Estratégica</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Comunidades</span>
       </div>
-       <div class="p-6">
-        <h3 class="font-display font-bold text-xl mb-2">SobreVidas (HealthTech)</h3>
-        <p class="text-secondary text-sm mb-4">Solução tecnológica para rastreamento e monitoramento de populações de alto risco de câncer bucal.</p>
-        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Product Discovery</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Scrum</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">UX Research</span>
-        </div>
-        <div class="quote-block pl-4 py-2 mb-4">
-         <p class="text-sm text-secondary italic">"Premiado no SBCAS 2025, impacto real na saúde pública."</p>
-        </div>
-        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg> Demo </a>
-        </div>
-       </div>
-      </article>
-      <!-- Workshop ADAs -->
-      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
-          <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
-          <img src="../assets/Logo_Adas.png" 
-          alt="Logo SobreVidas"
-          class="w-4/4 h-4/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
-          <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+      <div class="quote-block pl-4 py-2 mb-4">
+      <p class="text-sm text-secondary italic">Construindo uma comunidade forte, com mais de 100 participantes.</p>
       </div>
-       <div class="p-6">
-        <h3 class="font-display font-bold text-xl mb-2">Workshops ADAs</h3>
-        <p class="text-secondary text-sm mb-4">Iniciativa estratégica para avanço da liderança e representatividade feminina na tecnologia (UFG).</p>
-        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Liderança</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Gestão Estratégica</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Comunidades</span>
-        </div>
-        <div class="quote-block pl-4 py-2 mb-4">
-         <p class="text-sm text-secondary italic">"Construindo uma comunidade forte, com mais de 100 participantes."</p>
-        </div>
-        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg> Demo </a>
-        </div>
-       </div>
-      </article>
-      <!-- AKCIT -->
-      <article class="bg-card rounded-2xl overflow-hidden card-hover group">
-        <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-white"></div> <!-- Fundo branco ocupa todo o espaço -->
-        <img src="../assets/Logo_AKCIT.png" 
-        alt="Logo SobreVidas"
-        class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
-        <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+      <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
+       <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"></svg>
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+       </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+       </svg> Demo </a>
       </div>
-       <div class="p-6">
-        <h3 class="font-display font-bold text-xl mb-2">Plataforma Educacional AKCIT</h3>
-        <p class="text-secondary text-sm mb-4">Design e desenvolvimento de materiais educacionais com foco em inovação visual e usabilidade.</p>
-        <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">UX/UI Design</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">HTML/CSS/JS</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Conteúdo Digital</span>
-        </div>
-        <div class="quote-block pl-4 py-2 mb-4">
-         <p class="text-sm text-secondary italic">"Forte contribuição em usabilidade e design centrado no usuário."</p>
-        </div>
-        <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg> Demo </a>
-        </div>
-       </div>
-      </article>
+     </div>
+    </article>
+    <!-- AKCIT -->
+    <article class="bg-card rounded-2xl overflow-hidden card-hover group">
+      <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center relative overflow-hidden">
+       <div class="absolute inset-0 bg-white"></div>
+      <img src="../assets/Logo_AKCIT.png" 
+      alt="Logo AKCIT"
+      class="w-3/4 h-3/4 object-contain transition-transform duration-300 group-hover:scale-105 relative">
+       <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors"></div>
+    </div>
+     <div class="p-6">
+      <h3 class="font-display font-bold text-xl mb-2">Plataforma Educacional AKCIT</h3>
+      <p class="text-secondary text-sm mb-4">Design e desenvolvimento de materiais educacionais com foco em inovação visual e usabilidade.</p>
+      <div class="flex flex-wrap gap-2 mb-4"><span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">UX/UI Design</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">HTML/CSS/JS</span> <span class="badge px-3 py-1 rounded-full text-xs font-medium text-cyan-400">Conteúdo Digital</span>
+      </div>
+      <div class="quote-block pl-4 py-2 mb-4">
+      <p class="text-sm text-secondary italic">Forte contribuição em usabilidade e design centrado no usuário.</p>
+      </div>
+      <div class="flex gap-3"><a href="#" class="flex items-center gap-2 text-sm text-cyan-400 hover:text-teal-300 transition-colors">
+       <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"></svg>
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+       </svg> GitHub </a> <a href="#" class="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+       </svg> Demo </a>
+      </div>
+     </div>
+    </article>
      </div>
      <div class="text-center mt-12"><button class="px-8 py-3 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-semibold rounded-lg transition-all"> Ver Todos os Projetos </button>
      </div>
@@ -1460,7 +1594,7 @@
     // Default configuration
     const defaultConfig = {
       profile_name: 'Luiza de Oliveira Costa',
-      profile_title: 'Product Management | AI & Data | HealthTech Student',
+      profile_title: 'Product Management | AI & Data | HealthTech | Computer Science',
       about_text: 'Olá! 👋🏽 Me chamo Luiza e sou estudante de Ciência da Computação com experiência em desenvolvimento de software e produtos digitais. Atuo em projetos como o SobreVidas (HealthTech) e iniciativas de liderança como o Workshop ADAs, com foco em dados, produto e inovação.',
       email_address: 'oliveiraluiza2012ufg@gmail.com',
       github_url: 'https://github.com/luizacostaa',
@@ -1488,7 +1622,7 @@
         impact: 'Projetos que conectam intuição visual com solidez técnica no ambiente educacional.'
       },
       exp2: {
-        title: 'Workshop Strategy Lead & Researcher',
+        title: 'Workshop Lead',
         company: 'Universidade Federal de Goiás',
         period: 'Maio/2024 - Fevereiro/2026',
         description: 'Líder estratégica do Workshops ADAs (liderança feminina) e Pesquisadora do projeto HealthTech SobreVidas (Câncer Bucal).',

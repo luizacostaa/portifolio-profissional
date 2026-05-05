@@ -29,3 +29,12 @@ setInterval(() => {
   currentIndex = (currentIndex + 1) % Math.ceil(totalItems / itemsPerSlide);
   updateCarousel();
 }, 5000); // Troca a cada 5 segundos
+
+// Close construction popup
+function closeConstructionPopup() {
+  const popup = document.getElementById('construction-popup');
+  popup.style.animation = 'fadeOut 0.3s ease-out forwards';
+  setTimeout(() => {
+    popup.style.display = 'none';
+  }, 300);
+}
