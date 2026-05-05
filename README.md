@@ -1,13 +1,13 @@
-# 🌐 Portfólio Profissional — Luiza Costa
+# Portfólio Profissional — Luiza Costa
 
-Bem-vindo(a) ao meu portfólio! 🚀
+Bem-vindos ao meu portfólio! 
 Este projeto foi desenvolvido para apresentar minha trajetória, projetos, habilidades e experiências na área de tecnologia.
 
 ---
 
 ## 🎥 Prévia do Projeto
 
-<video src="assets/portfolio-canva.mp4" controls width="100%"></video>
+<video src="../assets/portfolio-canva.mp4" controls width="100%"></video>
 
 ---
 
@@ -33,11 +33,10 @@ Tenho interesse em:
 *  Apresentação pessoal com foto
 *  Seção de habilidades técnicas
 *  Projetos com:
-
-  * descrição
-  * tecnologias utilizadas
-  * imagens, vídeos e links
-  * comentários pessoais (insights)
+    * descrição
+    * tecnologias utilizadas
+    * imagens, vídeos e links
+    * comentários pessoais (insights)
 *  Linha do tempo interativa da carreira
 *  Conquistas e certificações
 *  Contato (GitHub, LinkedIn, e-mail)
