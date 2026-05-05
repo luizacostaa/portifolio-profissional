@@ -3,11 +3,11 @@
 Bem-vindos ao meu portfólio! 
 Este projeto foi desenvolvido para apresentar minha trajetória, projetos, habilidades e experiências na área de tecnologia.
 
----
+<!-- ---
 
 ## 🎥 Prévia do Projeto
 
-<video src="../assets/portfolio-canva.mp4" controls width="100%"></video>
+<video src="../assets/portfolio-canva.mp4" controls width="100%"></video> -->
 
 ---
 
